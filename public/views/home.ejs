@@ -1,0 +1,35 @@
+<section class="section-row home" ng-controller="AuthController">
+	<div class="home-header">
+		<h1>IndexCards v1</h1>
+	</div>
+
+	<div class="home-body">
+		<div class="intro" ng-controller="HomeController">
+			<div class="index-card"
+					 ng-click="flipCard()"
+					 ng-class="{ on: card_on === true }">
+				<span ng-include="'views/includes/index_card.ejs'"></span>
+
+				<div>
+					<div class="front">Term</div>
+					<div class="back">Definition for the term</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="login-box">
+			<div class="button-row">
+				<button ng-class="{ active: showLogin === true }" ng-click="showLogin = true">Login</button>
+				<button ng-class="{ active: showLogin === false }" ng-click="showLogin = false">Create Account</button>
+			</div>
+			<div class="form-row">
+				<label>Email</label>
+				<input type="text" ng-model="email">
+				<label>Password</label>
+				<input type="password" ng-model="password">
+				<button ng-show="showLogin" class="create-btn" ng-click="loginUser()">Login</button>
+				<button ng-hide="showLogin" class="create-btn" ng-click="createNewUser()">Create</button>
+			</div>
+		</div>
+	</div>
+</section>

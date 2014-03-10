@@ -1,0 +1,183 @@
+section.home
+  height:600px;
+  background-color:$blue_back;
+  clearfix();
+
+  div.home-header
+    width:980px;
+    margin:40px auto 20px;
+    clearfix();
+
+    h1
+      display:inline-block;
+      float:left;
+      font-size:24px;
+
+  div.home-body
+    width:980px;
+    margin:0 auto;
+
+  div.intro
+    display:inline-block;
+    float:left;
+    width:50%;
+
+    div.index-card
+      position                   : relative;
+      display:inline-block;
+      float:left;
+      height                     : 400px;
+      width                      : 650px;
+      padding                    : 60px;
+      margin                     : 0 auto;
+      cursor                     : pointer;
+      border-radius              : 10px;
+      background                 : #fff;
+      margin-right:20px;
+      box-shadow:1px 1px 1px 0 rgba(0,0,0,0.08);
+      z-index:1;
+
+      transition                 : all .4s ease-in-out;
+      -webkit-transition         : all .4s ease-in-out;
+      perspective                : 100px;
+      perspective-origin         : 50%;
+      -webkit-perspective        : 100px;
+      -webkit-perspective-origin : 50%;
+      
+      z-index:1;
+
+      &.on
+        box-shadow:1px -1px 0 0 rgba(0,0,0,0.1);
+        transform         : rotateX(180deg);
+        -webkit-transform : rotateX(180deg);
+        transition                 : all .4s ease-in-out;
+        -webkit-transition         : all .4s ease-in-out;
+
+        div.front
+          opacity            : 0;
+          -webkit-transition : all 0.2s ease-in-out;
+
+        div.back
+          opacity            : 1;
+          -webkit-transition : all 0.2s ease-in-out;
+          -webkit-transition-delay : .1s;
+
+      div.front,
+      div.back
+        margin: 0;
+        height: 300px;
+        line-height: 100px;
+
+      div.front
+        position           : absolute;
+        top                : 0;
+        left               : 0;
+        width              : 650px;
+        height:400px;
+        padding            : 0;
+        padding-top:187px;
+        margin             : 0;
+        font-size          : 36px;
+        text-align         : center;
+        line-height        : 0;
+        opacity            : 1;
+        color              : #444;
+
+        -webkit-transition : all 0.2s ease-in-out;
+        -webkit-transition-delay : .1s;
+
+      div.back
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 650px;
+        height: 400px;
+        margin: 0;
+        padding: 0 40px;
+        padding-top: 93px;
+        font-size          : 18px;
+        color              : #444;
+        line-height        : 40px;
+        opacity            : 0;
+        z-index            : 1;
+
+        transform          : rotateX(-180deg);
+        -webkit-transform  : rotateX(-180deg);
+
+      svg
+        position : absolute;
+        top      : 0;
+        left     : 0;
+        width    : 100%;
+        height   : 100%;
+      line
+        stroke-linecap : butt;
+      line
+        stroke       : #F05E4D;
+        stroke-width : .5;
+      line
+        stroke       : #2CDEF2;
+        stroke-width : .5;
+
+  div.login-box
+    position:relative;
+    display:inline-block;
+    float:right;
+    width:250px;
+    border-radius:8px;
+    height:380px;
+    width:340px
+    margin-top:20px;
+    padding:30px 30px 30px 37px;
+    background-color:$blue2_o2;
+    overflow:hidden;
+
+    div.button-row
+      clearfix();
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+
+      button
+        height:60px;
+        padding:0 20px;
+        width:50%;
+        display:inline-block;
+        float:left;
+        background-color:$blue_o2;
+        border-radius:0;
+        font-size:18px;
+
+        &.active
+          background-color:transparent;
+
+    div.form-row
+      margin-top:70px;
+      label
+        display:block;
+        width:100%;
+        margin-bottom:5px;
+
+      input
+        width:100%;
+        height:50px;
+        font-size:18px;
+        color:#222;
+        border-radius:0;
+        background-color:$blue2_o2;
+        margin-bottom:20px;
+
+      input[type='password']
+        border-radius:0;
+        background-color:$blue2_o2;
+
+      button.create-btn
+        position:absolute;
+        bottom:0;
+        left:0;
+        width:100%;
+        height:60px;
+        background-color:$blue_o4;
+        font-size:18px;
+        border-radius:0;

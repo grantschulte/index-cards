@@ -1,0 +1,24 @@
+<!doctype html>
+<html ng-app='indexCards'>
+<head>
+	<title>IndexCards - v1.0</title>
+	<link rel='stylesheet' href='stylesheets/app.css'>
+  <link rel='stylesheet' href='/font-awesome/css/font-awesome.min.css'>
+  <script src='/jquery/dist/jquery.min.js'></script>
+  <script src='/firebase/firebase.js'></script>
+  <script src='/firebase-simple-login/firebase-simple-login.js'></script>
+  <script src='/angular/angular.min.js'></script>
+  <script src='/angular-route/angular-route.min.js'></script>
+  <script src='/angularfire/angularfire.min.js'></script>
+  <script src='/javascripts/config.js'></script>
+  <script src='/javascripts/auth.js'></script>
+  <script src='/javascripts/controllers/profiles_controller.js'></script>
+  <script src='/javascripts/controllers/sets_controller.js'></script>
+  <script src='/javascripts/controllers/home_controller.js'></script>
+</head>
+<body>
+  <header ng-show="auth.user" ng-include="'views/includes/header.ejs'"></header>
+  <section ng-view></section>
+  <footer></footer>
+</body>
+</html>
