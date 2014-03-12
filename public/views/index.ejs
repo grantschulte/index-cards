@@ -1,8 +1,8 @@
 <!doctype html>
 <html ng-app='indexCards'>
 <head>
-	<title>IndexCards - v1.0</title>
-	<link rel='stylesheet' href='stylesheets/app.css'>
+  <title>IndexCards - v1.0</title>
+  <link rel='stylesheet' href='stylesheets/app.css'>
   <link rel='stylesheet' href='/font-awesome/css/font-awesome.min.css'>
   <script src='/jquery/dist/jquery.min.js'></script>
   <script src='/firebase/firebase.js'></script>
@@ -17,7 +17,7 @@
   <script src='/javascripts/controllers/home_controller.js'></script>
 </head>
 <body>
-  <header ng-show="auth.user" ng-include="'views/includes/header.ejs'"></header>
+  <header ng-include="'views/includes/header.ejs'"></header>
   <section ng-view></section>
   <footer></footer>
 </body>

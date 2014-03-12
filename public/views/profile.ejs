@@ -1,23 +1,23 @@
 <section class="section-row profile" ng-controller="ProfilesController">
 
-	<div class="profile-header container">
-		<div>
-			<input type="text" ng-model="set" placeholder="Set title">
-		</div>
-		<div>
-			<button ng-click="createSet()"><i class="fa fa-plus"></i> Create Set</button>
-		</div>
-	</div>
+  <div class="profile-header container">
+    <div>
+      <input type="text" ng-model="set" placeholder="Set title">
+    </div>
+    <div>
+      <button ng-click="createSet()"><i class="fa fa-plus"></i> Create Set</button>
+    </div>
+  </div>
 
-	<div class="cardsets body-container section-row">
-		<div class="set" ng-repeat="(id, set) in user.sets">
-			<a href="#/profile/{{ user.id }}/sets/{{ id }}">
-				<p>{{ set.name }}</p>
-			</a>
-			<button ng-click="deleteSet( id )">
-				<i class="fa fa-times"></i>
-			</button>
-		</div>
-	</div>
+  <div class="cardsets body-container section-row">
+    <div class="set" ng-repeat="(id, set) in user.sets">
+      <a href="#/profile/{{ user.id }}/sets/{{ id }}">
+        <p>{{ set.name }}</p>
+      </a>
+      <button ng-click="deleteSet(id)">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+  </div>
 
 </section>

@@ -1,4 +1,4 @@
-function SetsController( $scope, $rootScope, $firebase, $firebaseSimpleLogin, $location, $routeParams, dbUrl ) {
+function SetsController( $scope, $rootScope, $firebase, $firebaseSimpleLogin, $location, $routeParams, dbUrl, $timeout ) {
 
   var init = function () {
     var authRef = new Firebase( dbUrl );
@@ -6,15 +6,14 @@ function SetsController( $scope, $rootScope, $firebase, $firebaseSimpleLogin, $l
 
     getProfile();
     getCards();
+    setView();
 
-    $scope.current_card = 0;
-    $scope.card_on = false;
+    $scope.currentCard = 1;
+    $scope.cardOn = false;
     $scope.scroll_left_px = 0;
     $scope.scroll_left = { left: $scope.scroll_left_px + 'px' };
-
-    $scope.addcards_open = false;
-    $scope.set_id = $routeParams.setid;
-  }
+    $scope.setId = $routeParams.setid;
+  };
 
   $scope.createCard = function () {
     $scope.cards.$add({
@@ -26,41 +25,41 @@ function SetsController( $scope, $rootScope, $firebase, $firebaseSimpleLogin, $l
         resetAddCards();
       },
       function ( err ) {
-        console.error( 'Create Card Failure: ', err );
+        console.log( 'Create Card Failure: ', err );
       }
     );
   };
 
-  $scope.deleteCard = function ( id ) {
+  $scope.deleteCard = function (id) {
     $scope.cards.$remove( id );
   };
 
   $scope.nextCard = function () {
-    $scope.addcards_open = false;
+    $scope.addCardsOpen = false;
 
-    if ( $scope.current_card === $scope.set_length ) {
+    if ( $scope.currentCard === $scope.setLength ) {
       return false
     }
     else {
       $scope.scroll_left_px = $scope.scroll_left_px - 670;
     }
 
-    $scope.current_card += 1;
-    $scope.card_on = false;
+    $scope.currentCard += 1;
+    $scope.cardOn = false;
   };
 
   $scope.prevCard = function () {
-    $scope.addcards_open = false;
+    $scope.addCardsOpen = false;
 
-    if ( $scope.current_card === 0 ) {
-      return false
+    if ( $scope.currentCard === 1 ) {
+      return false;
     }
     else {
       $scope.scroll_left_px = $scope.scroll_left_px + 670;
     }
 
-    $scope.current_card -= 1;
-    $scope.card_on = false;
+    $scope.currentCard -= 1;
+    $scope.cardOn = false;
   };
 
   $scope.scrollLeft = function () {
@@ -69,14 +68,14 @@ function SetsController( $scope, $rootScope, $firebase, $firebaseSimpleLogin, $l
     }
   };
 
-  $scope.flipCard = function ( id ) {
-    if ( id === $scope.current_card ) {
-      $scope.card_on = !$scope.card_on;
+  $scope.flipCard = function (id) {
+    if ( id + 1 === $scope.currentCard ) {
+      $scope.cardOn = !$scope.cardOn;
     }
   };
 
-  $scope.openAddCards = function () {
-    $scope.addcards_open = !$scope.addcards_open;
+  $scope.toggleAddCards = function () {
+    $scope.addCardsOpen = !$scope.addCardsOpen;
   };
 
   var getProfile = function () {
@@ -91,14 +90,28 @@ function SetsController( $scope, $rootScope, $firebase, $firebaseSimpleLogin, $l
     $scope.set = $firebase( setRef );
     $scope.cards = $scope.set.$child('cards');
 
+    // Data loaded
+    $scope.cards.$on( 'loaded', function () {
+      console.log( 'Cardset Data' );
+      $scope.dataLoaded = true;
+    });
+
     // Gets length of set
     cardSnapshot.once('value', function ( snapshot ) {
-      $scope.set_length = snapshot.numChildren() - 1;
+      $scope.setLength = snapshot.numChildren();
     });
   };
 
+  // Opens add cards template if set is empty
+  var setView = function () {
+    if ( $scope.setLength === 0 || $scope.setLength === undefined ) {
+      $scope.addCardsOpen = true;
+    }
+  };
+
+  // Reset add cards template after card is created
   var resetAddCards = function () {
-    $scope.addcards_open = false;
+    $scope.addCardsOpen = false;
     $scope.term = '';
     $scope.definition = '';
   };

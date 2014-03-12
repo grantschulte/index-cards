@@ -1,50 +1,59 @@
 <section class="section-row set" ng-controller="SetsController">
 
-	<div class="index-card-header container">
-		<div>
-			<h1>{{ set.name }}</h1>
-			<div class="index-card-number">{{ current_card + 1 }} / {{ set_length + 1 }}</div>
-		</div>
-		<div>
-			<button ng-class="{ active: addcards_open === true }" ng-click="openAddCards()">
-				<i class="fa fa-plus-square"></i>
-				<span>Add Cards</span>
-			</button>
-			<a href="#/profile/{{ user.id }}/sets/{{ set_id }}/edit">
-				<i class="fa fa-pencil-square"></i>
-				<span>Edit Set</span>
-			</a>
-		</div>
-	</div>
+  <div class="index-card-header container">
+    <div>
+      <h1>{{ set.name }}</h1>
+      <div ng-show="setLength > 0" class="index-card-number">
+        {{ currentCard }} / {{ setLength }}
+      </div>
+    </div>
 
-	<div class="index-card-container body-container container">
-		<div class="scroll" ng-style="scrollLeft()">
-			<div class="index-card"
-					 ng-click="flipCard( id )"
-					 ng-class="{ on: card_on === true && current_card === id }"
-					 ng-repeat="(id, card) in cards | orderByPriority">
+    <div>
+      <button ng-class="{ active: addCardsOpen === true }" 
+              ng-click="toggleAddCards()">
+        <i class="fa fa-plus-square"></i>
+        <span>Add Cards</span>
+      </button>
+      <a href="#/profile/{{ user.id }}/sets/{{ setId }}/edit">
+        <i class="fa fa-pencil-square"></i>
+        <span>Edit Set</span>
+      </a>
+    </div>
+  </div>
 
-				<span ng-include="'views/includes/index_card.ejs'"></span>
+  <div class="index-card-container body-container container">
+    <div class="scroll" ng-style="scrollLeft()">
+      <div class="index-card"
+           ng-click="flipCard(id)"
+           ng-class="{ on: cardOn === true && currentCard === id + 1 }"
+           ng-repeat="(id, card) in cards | orderByPriority">
 
-				<div>
-					<div class="front">{{ card.term }}</div>
-					<div class="back">{{ card.definition }}</div>
-				</div>
-			</div>
-		</div>
+        <span ng-include="'views/includes/index_card.ejs'"></span>
 
-	</div>
+        <div>
+          <div class="front">{{ card.term }}</div>
+          <div class="back">{{ card.definition }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-	<div class="add-cards pop" ng-show="addcards_open">
-		<input type="text" placeholder="Term" ng-model="term">
-		<textarea placeholder="Definition" ng-model="definition"></textarea>
-		<button ng-click="createCard()">Add Card</button>
-	</div>
+  <div class="add-cards pop" ng-show="addCardsOpen">
+    <input type="text" placeholder="Term" ng-model="term">
+    <textarea placeholder="Definition" ng-model="definition"></textarea>
+    <button ng-click="createCard()">Add Card</button>
+  </div>
 
-	<div class="button-row">
-		<button class="prev" ng-show="current_card > 0" ng-click="prevCard()"><i class="fa fa-chevron-left"></i></button>
-		<button class="next" ng-hide="current_card === set_length" ng-click="nextCard()"><i class="fa fa-chevron-right"></i></button>
-	</div>
+  <div class="button-row">
+    <button class="prev" ng-show="currentCard > 1" ng-click="prevCard()">
+      <i class="fa fa-chevron-left"></i>
+    </button>
+    <button class="next" 
+            ng-hide="currentCard === setLength || setLength === 0"
+            ng-click="nextCard()">
+      <i class="fa fa-chevron-right"></i>
+    </button>
+  </div>
 
 </section>
 

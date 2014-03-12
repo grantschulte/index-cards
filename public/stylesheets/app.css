@@ -170,6 +170,9 @@ header:after {
 header a {
   color: #fff;
 }
+header a:hover {
+  color: #f06048;
+}
 header div.header h1 {
   display: inline-block;
   float: left;

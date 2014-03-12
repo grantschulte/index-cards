@@ -1,12 +1,11 @@
 function HomeController( $scope ) {
 
-	 var init = function () {
-		$scope.current_card = 0;
-    $scope.card_on = false;
+   var init = function () {
+    $scope.cardOn = false;
   }
 
-	$scope.flipCard = function () {
-    $scope.card_on = !$scope.card_on;
+  $scope.flipCard = function () {
+    $scope.cardOn = !$scope.cardOn;
   };
 
 };
