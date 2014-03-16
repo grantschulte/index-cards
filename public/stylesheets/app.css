@@ -79,6 +79,14 @@ h1 {
     -webkit-transform: scale(1);
   }
 }
+[ngcloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
 @-moz-keyframes bouncedelay {
   0%, 80%, 100% {
     transform: scale(0);

@@ -23,7 +23,7 @@
   <script src='/javascripts/controllers/profiles_controller.js'></script>
   <script src='/javascripts/controllers/sets_controller.js'></script>
 </head>
-<body>
+<body ng-cloak>
   <header ng-include="'views/includes/header.ejs'" ng-show-auth="login"></header>
   <section class="wrapper" ng-view></section>
   <footer ng-show-auth="login"></footer>
