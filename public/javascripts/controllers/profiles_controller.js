@@ -1,9 +1,6 @@
-function ProfilesController( $scope, $rootScope, $firebase, $firebaseSimpleLogin, $location, $routeParams, dbUrl ) {
+function ProfilesController( $scope, $rootScope, $firebase, $location, $routeParams, FBURL, loginService ) {
 
   var init = function () {
-    var authRef = new Firebase( dbUrl );
-    $rootScope.auth = $firebaseSimpleLogin( authRef );
-
     getProfile();
   }
 
@@ -25,19 +22,11 @@ function ProfilesController( $scope, $rootScope, $firebase, $firebaseSimpleLogin
     $scope.sets.$remove( id );
   };
 
-  $rootScope.logoutUser = function () {
-    $rootScope.auth.$logout();
-  };
-
   var getProfile = function () {
-    var userRef = new Firebase( dbUrl + 'users/' + $routeParams.id );
+    var userRef = new Firebase( FBURL + 'users/' + $routeParams.id );
     $scope.user = $firebase( userRef );
     $scope.sets = $scope.user.$child('sets');
   };
-
-  $rootScope.$on("$firebaseSimpleLogin:logout", function ( e, user ) {
-    $location.path( "/" );
-  });
 
   init();
 };

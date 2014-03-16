@@ -1,24 +1,31 @@
 <!doctype html>
-<html ng-app='indexCards'>
+<html lang="eng" ng-app="indexCards">
 <head>
+  <meta charset="utf-8">
   <title>IndexCards - v1.0</title>
   <link rel='stylesheet' href='stylesheets/app.css'>
   <link rel='stylesheet' href='/font-awesome/css/font-awesome.min.css'>
-  <script src='/jquery/dist/jquery.min.js'></script>
   <script src='/firebase/firebase.js'></script>
   <script src='/firebase-simple-login/firebase-simple-login.js'></script>
   <script src='/angular/angular.min.js'></script>
   <script src='/angular-route/angular-route.min.js'></script>
   <script src='/angularfire/angularfire.min.js'></script>
+  <script src='/javascripts/app.js'></script>
   <script src='/javascripts/config.js'></script>
-  <script src='/javascripts/auth.js'></script>
+  <script src='/javascripts/routes.js'></script>
+  <script src='/javascripts/services.js'></script>
+  <script src='/javascripts/service.login.js'></script>
+  <script src='/javascripts/service.firebase.js'></script>
+  <script src='/javascripts/module.simpleLoginTools.js'></script>
+  <script src='/javascripts/module.routeSecurity.js'></script>
+  <script src='/javascripts/controllers/login_controller.js'></script>
+  <script src='/javascripts/controllers/header_controller.js'></script>
   <script src='/javascripts/controllers/profiles_controller.js'></script>
   <script src='/javascripts/controllers/sets_controller.js'></script>
-  <script src='/javascripts/controllers/home_controller.js'></script>
 </head>
 <body>
-  <header ng-include="'views/includes/header.ejs'"></header>
-  <section ng-view></section>
-  <footer></footer>
+  <header ng-include="'views/includes/header.ejs'" ng-show-auth="login"></header>
+  <section class="wrapper" ng-view></section>
+  <footer ng-show-auth="login"></footer>
 </body>
 </html>

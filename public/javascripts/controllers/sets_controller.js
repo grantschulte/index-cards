@@ -1,9 +1,6 @@
-function SetsController( $scope, $rootScope, $firebase, $firebaseSimpleLogin, $location, $routeParams, dbUrl, $timeout ) {
+function SetsController( $scope, $rootScope, $firebase, $location, $routeParams, FBURL, $timeout, loginService ) {
 
   var init = function () {
-    var authRef = new Firebase( dbUrl );
-    $rootScope.auth = $firebaseSimpleLogin( authRef );
-
     getProfile();
     getCards();
     setView();
@@ -79,12 +76,12 @@ function SetsController( $scope, $rootScope, $firebase, $firebaseSimpleLogin, $l
   };
 
   var getProfile = function () {
-    var userRef = new Firebase( dbUrl + 'users/' + $routeParams.id );
+    var userRef = new Firebase( FBURL + 'users/' + $routeParams.id );
     $scope.user = $firebase( userRef );
   };
 
   var getCards = function () {
-    var setRef = new Firebase( dbUrl + 'users/' + $routeParams.id + '/sets/' + $routeParams.setid );
+    var setRef = new Firebase( FBURL + 'users/' + $routeParams.id + '/sets/' + $routeParams.setid );
     var cardSnapshot = setRef.child('cards');
 
     $scope.set = $firebase( setRef );
@@ -92,7 +89,7 @@ function SetsController( $scope, $rootScope, $firebase, $firebaseSimpleLogin, $l
 
     // Data loaded
     $scope.cards.$on( 'loaded', function () {
-      console.log( 'Cardset Data' );
+      console.log( 'Cardset Loaded' );
       $scope.dataLoaded = true;
     });
 
@@ -115,14 +112,6 @@ function SetsController( $scope, $rootScope, $firebase, $firebaseSimpleLogin, $l
     $scope.term = '';
     $scope.definition = '';
   };
-
-  $rootScope.logoutUser = function () {
-    $rootScope.auth.$logout();
-  };
-
-  $rootScope.$on("$firebaseSimpleLogin:logout", function ( e, user ) {
-    $location.path( "/" );
-  });
 
   init();
 };
