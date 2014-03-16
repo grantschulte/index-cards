@@ -4,12 +4,14 @@ function LoginController( $scope, $rootScope, $location, loginService ) {
     $scope.email = null;
     $scope.password = null;
 
+    $scope.loading = false;
     $scope.showLogin = true;
     $scope.cardOn = false;
   };
 
   $scope.login = function ( cb ) {
     $scope.err = null;
+    $scope.loading = true;
 
     if ( !$scope.email ) {
       $scope.err = 'Please enter an email address';
@@ -23,6 +25,8 @@ function LoginController( $scope, $rootScope, $location, loginService ) {
         if ( !err ) {
           cb && cb(user);
           $location.path( '/profile/' + user.id );
+        } else {
+          $scope.loading = false;
         }
       });
     }
@@ -30,11 +34,13 @@ function LoginController( $scope, $rootScope, $location, loginService ) {
 
   $scope.createAccount = function () {
     $scope.err = null;
-    console.log( 'clicked' );
+    $scope.loading = true;
+
     if ( assertValidLoginAttempt() ) {
       loginService.createAccount( $scope.email, $scope.password, function ( err, user ) {
         if( err ) {
           $scope.err = err? err + '' : null;
+          $scope.loading = false;
         }
         else {
           $scope.login( function() {

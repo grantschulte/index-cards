@@ -1,4 +1,4 @@
-<section class="section-row home" ng-controller="LoginController">
+<section class="section-row home" ng-controller="LoginController" ng-cloak>
   <div class="home-header">
     <h1>IndexCards v1</h1>
   </div>
@@ -13,12 +13,17 @@
     <div class="intro">
       <div class="index-card"
            ng-click="flipCard()"
-           ng-class="{ on: cardOn === true }">
+           ng-class="{ on: cardOn }">
         <span ng-include="'views/includes/index_card.ejs'"></span>
 
         <div>
-          <div class="front">Renaissance</div>
-          <div class="back">The Renaissance was a cultural movement that spanned the period roughly from the 14th to the 17th century, beginning in Italy in the Late Middle Ages and later spreading to the rest of Europe.</div>
+          <div ng-hide="loading" class="front">Renaissance</div>
+          <div ng-hide="loading" class="back">The Renaissance was a cultural movement that spanned the period roughly from the 14th to the 17th century, beginning in Italy in the Late Middle Ages and later spreading to the rest of Europe.</div>
+          <div ng-show="loading" class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+          </div>
         </div>
       </div>
 
@@ -29,8 +34,8 @@
 
     <div class="login-box">
       <div class="button-row">
-        <button ng-class="{ active: showLogin === true }" ng-click="showLogin = true">Login</button>
-        <button ng-class="{ active: showLogin === false }" ng-click="showLogin = false">Create Account</button>
+        <button ng-class="{ active: showLogin }" ng-click="showLogin = true">Login</button>
+        <button ng-class="{ active: !showLogin }" ng-click="showLogin = false">Create Account</button>
       </div>
       <div class="form-row">
         <input type="text" ng-model="email" placeholder="Email">
@@ -41,5 +46,4 @@
       </div>
     </div>
   </div>
-
 </section>
