@@ -1,20 +1,38 @@
-<section class="section-row set" ng-controller="SetsController">
+<section class="section-row edit-set" ng-controller="SetsController">
 
-  <div class="add-card section-row">
+  <div class="edit-header">
     <div>
-      <input type="text" ng-model="term" placeholder="Term">
-      <button class="btn" ng-click="createCard()">Create Card</button>
+      <input type="text" ng-model="set.name">
+      <div ng-show="setLength > 0" class="index-card-number">
+          {{ setLength }} Cards
+      </div>
     </div>
-    <textarea ng-model="definition" placeholder="Definition"></textarea>
+    <div>
+      <button ng-click="editSetName()">
+        <i class="fa fa-pencil-square"></i> 
+        Rename Set
+      </button>
+      <a href="#/profile/{{ user.id }}/sets/{{ setId }}">
+        <i class="fa fa-pencil-square"></i> 
+        View Set
+      </a>
+    </div>
   </div>
 
-  <div class="index-card-container section-row">
-    <div class="card" ng-repeat="(id, card) in cards">
-      <p>{{ card.term }}</p>
-      <button ng-click="deleteCard(id)">
-        <i class="fa fa-times"></i>
-      </button>
-    </div>
+  <div class="section-row section-body">
+    <ul class="edit-set-list">
+      <li ng-repeat="(id, card) in cards">
+        <div class="term">
+          <h3>{{ card.term }}</h3>
+          <p>{{ card.definition }}</p>
+        </div>
+        <div class="edit-actions">
+<!--           <i class="fa fa-arrow-up"></i>
+          <i class="fa fa-arrow-down"></i> -->
+          <i ng-click="deleteCard(id)" class="fa fa-times"></i>
+        </div>
+      </li>
+    </ul>
   </div>
 
 </section>

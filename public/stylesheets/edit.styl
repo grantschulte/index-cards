@@ -1,0 +1,134 @@
+section.edit-set
+  background-color:$blue_back;
+  padding:0;
+  margin-bottom:0;
+  width:100%;
+  overflow:hidden;
+  position:relative;
+
+  div.edit-header
+    width         : 100%;
+    margin        : 0 auto;
+    color         : $dark;
+    overflow      : auto;
+    padding       : 0;
+    height        : 60px;
+    position      : relative;
+    background-color:$blue;
+
+    :-moz-placeholder
+      color:$blue2 !important;
+
+    :-ms-input-placeholder
+      color:$blue2 !important;
+
+    ::-webkit-input-placeholder
+      color:$blue2 !important;
+
+    > div:first-child
+      display:inline-block;
+      float:left;
+      width:70%;
+      position:relative;
+      clearfix();
+
+      input
+        display:block;
+        float:left;
+        padding          : 0;
+        padding-left     :20px;
+        margin           : 0;
+        font-size        : 22px;
+        text-align       : left;
+        height           :60px;
+        font-weight:normal;
+        background:transparent;
+        
+      div.index-card-number
+        position:absolute;
+        top:0;
+        right:0;
+        width:120px;
+        line-height      : 60px;
+        text-align:center;
+        height:60px;
+        background-color:$blue_o2;
+
+    > div:last-child
+      display:inline-block;
+      float:right;
+      width:30%;
+      clearfix();
+
+      button,
+      a
+        display:inline-block;
+        float:left;
+        margin:0;
+        width:50%;
+        height:60px;
+        border-radius:0;
+        background-color:$blue_o4;
+        font-size:16px;
+
+        &:hover
+          background-color:$blue_o6;
+
+        &:last-child
+          border-left:1px solid rgba(0,0,0,0.1);
+
+        i
+          margin-right:10px;
+
+      a
+        color:$dark;
+        text-align:center;
+        line-height:60px;
+
+  ul.edit-set-list
+    margin:0;
+    padding:0 60px;
+    list-style:none;
+
+    li
+      padding:15px 0;
+      border-bottom:1px solid $blue2_o2;
+      clearfix();
+
+      &:first-child
+        padding-top:0;
+
+      &:last-child
+        padding-bottom:0;
+        border-bottom:0;
+
+      div.term,
+      div.edit-actions
+        display:inline-block;
+        float:left;
+
+      div.term
+        width:70%;
+
+        h3
+          margin-top:0;
+          margin-bottom:10px;
+          font-size:18px;
+
+        p
+          margin:0;
+          font-size:14px;
+
+      div.edit-actions
+        width:30%;
+        float:right;
+        clearfix();
+
+        i
+          float:right;
+          margin:0 8px;
+          font-size:18px;
+          color:#555;
+          cursor:pointer;
+        i.fa-times
+          color:$red;

@@ -28,7 +28,7 @@ function SetsController( $scope, $rootScope, $firebase, $location, $routeParams,
   };
 
   $scope.deleteCard = function (id) {
-    $scope.cards.$remove( id );
+    $scope.cards.$remove(id);
   };
 
   $scope.nextCard = function () {
