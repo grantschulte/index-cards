@@ -21,8 +21,9 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.favicon(path.join(__dirname, 'images/favicon.ico')));
 
 // development only
 if ('development' == app.get('env')) {
