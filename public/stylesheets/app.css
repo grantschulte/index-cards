@@ -1271,3 +1271,12 @@ section.edit-set ul.edit-set-list li div.edit-actions i {
 section.edit-set ul.edit-set-list li div.edit-actions i.fa-times {
   color: #f06048;
 }
+section.edit-set div.edit-set-zero p {
+  padding-top: 80px;
+  text-align: center;
+  font-size: 28px;
+  color: #f06048;
+}
+section.edit-set div.edit-set-zero a {
+  color: #303030;
+}

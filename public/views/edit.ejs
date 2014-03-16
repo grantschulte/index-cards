@@ -19,6 +19,10 @@
     </div>
   </div>
 
+  <div class="edit-set-zero body-container" ng-show="setLength === 0">
+    <p>You don't have any cards in this set. <a href="#/profile/{{ user.id }}/sets/{{ setId }}">Create some.</a></p>
+  </div>
+
   <div class="section-row section-body">
     <ul class="edit-set-list">
       <li ng-repeat="(id, card) in cards">
