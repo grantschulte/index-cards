@@ -55,7 +55,6 @@ angular.module('indexCards.service.login', ['firebase', 'indexCards.service.fire
 
         createAccount: function (email, password, callback) {
           assertAuth();
-
           auth.$createUser(email, password).then( function (user) {
             callback && callback(null, user)
           }, callback);
@@ -71,11 +70,15 @@ angular.module('indexCards.service.login', ['firebase', 'indexCards.service.fire
 
 .factory('profileCreator', ['firebaseRef', '$timeout', function(firebaseRef, $timeout) {
   return function(id, email, callback) {
-    firebaseRef( 'users/' + id ).set({email: email, id: id, sets: false}, function(err) {
+    firebaseRef( 'users/' + id ).set({
+      email: email,
+      id: id,
+      sets: false
+    }, function( err ) {
       if( callback ) {
-        $timeout(function() {
-          callback(err);
-        })
+        $timeout( function() {
+          callback( err );
+        });
       }
     });
   }

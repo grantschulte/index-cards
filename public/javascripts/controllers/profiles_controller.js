@@ -5,6 +5,8 @@ function ProfilesController( $scope, $rootScope, $firebase, $location, $routePar
   }
 
   $scope.createSet = function () {
+    if ( !$scope.set ) { return false; }
+
     $scope.sets.$add({
       name: $scope.set,
       cards: false

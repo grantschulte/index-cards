@@ -24,6 +24,15 @@ section.profile
     position      : relative;
     background-color:$blue;
 
+    :-moz-placeholder
+      color:$blue2 !important;
+
+    :-ms-input-placeholder
+      color:$blue2 !important;
+
+    ::-webkit-input-placeholder
+      color:$blue2 !important;
+
     > div:first-child
       display:inline-block;
       float:left;
@@ -97,19 +106,6 @@ section.profile
         box-shadow:1px 1px 0 0 rgba(0,0,0,0.03);
         z-index:0;
 
-      // &:before
-      //   display          : inline-block;
-      //   position         : absolute;
-      //   content          : '';
-      //   top              : 3px;
-      //   left             : 3px;
-      //   width            : 160px;
-      //   height           : 100px;
-      //   border-radius    : 5px;
-      //   background-color : #fff;
-      //   box-shadow:1px 1px 0 0 rgba(0,0,0,0.08);
-      //   z-index:-1;
-
       a 
         color:$red;
         position:absolute;
@@ -120,11 +116,12 @@ section.profile
         z-index:1000;
         border-radius    : 5px;
         box-shadow:1px 1px 0 0 rgba(0,0,0,0.03);
+        z-index:0;
       p
         margin      : 0;
         line-height : 100px;
         color:$red;
-      button
+      button.delete-set
         position    : absolute;
         top         : 3px;
         right       : 5px;
@@ -135,3 +132,11 @@ section.profile
         padding     : 0;
         margin      : 0;
         cursor:pointer;
+        z-index:10;
+
+  div.profile-zero
+    p
+      padding-top:80px;
+      text-align: center;
+      font-size: 28px;
+      color:$red;

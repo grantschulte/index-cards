@@ -11,17 +11,18 @@ function LoginController( $scope, $rootScope, $location, loginService ) {
   $scope.login = function ( cb ) {
     $scope.err = null;
 
-    if( !$scope.email ) {
+    if ( !$scope.email ) {
       $scope.err = 'Please enter an email address';
     }
-    else if( !$scope.password ) {
+    else if ( !$scope.password ) {
       $scope.err = 'Please enter a password';
     }
     else {
       loginService.login( $scope.email, $scope.password, function ( err, user ) {
         $scope.err = err? err + '' : null;
-        if( !err ) {
-          // $location.path( '/profile/' + user.id );
+        if ( !err ) {
+          cb && cb(user);
+          $location.path( '/profile/' + user.id );
         }
       });
     }
@@ -29,7 +30,7 @@ function LoginController( $scope, $rootScope, $location, loginService ) {
 
   $scope.createAccount = function () {
     $scope.err = null;
-
+    console.log( 'clicked' );
     if ( assertValidLoginAttempt() ) {
       loginService.createAccount( $scope.email, $scope.password, function ( err, user ) {
         if( err ) {
@@ -38,7 +39,6 @@ function LoginController( $scope, $rootScope, $location, loginService ) {
         else {
           $scope.login( function() {
             loginService.createProfile( user.id, user.email );
-            $location.path( '/profile/' + user.id );
           });
         }
       });
@@ -50,25 +50,20 @@ function LoginController( $scope, $rootScope, $location, loginService ) {
   };
 
   function assertValidLoginAttempt() {
-    if( !$scope.email ) {
+    if ( !$scope.email ) {
       $scope.err = 'Please enter an email address';
     }
-    else if( !$scope.password ) {
+    else if ( !$scope.password ) {
       $scope.err = 'Please enter a password';
     }
-    else if( $scope.password !== $scope.confirm ) {
+    else if ( $scope.password !== $scope.confirm ) {
       $scope.err = 'Passwords do not match';
+    }
+    else if ( $scope.password.length < 6 ) {
+      $scope.err = 'Password must have at least 6 characters';
     }
     return !$scope.err;
   }
-
-  // $rootScope.$on("$firebaseSimpleLogin:login", function (e, user) {
-  //   $location.path('/profile/' + user.id);
-  // });
-
-  // $rootScope.$on("$firebaseSimpleLogin:logout", function (e, user) {
-  //   $location.path('/');
-  // });
   
   init();
 };

@@ -9,12 +9,16 @@
     </div>
   </div>
 
-  <div class="cardsets body-container section-row">
+  <div class="profile-zero body-container" ng-show="!user.sets">
+    <p>You don't have any card sets. Create one!</p>
+  </div>
+
+  <div class="cardsets body-container section-row" ng-show="user.sets">
     <div class="set" ng-repeat="(id, set) in user.sets">
       <a href="#/profile/{{ user.id }}/sets/{{ id }}">
         <p>{{ set.name }}</p>
       </a>
-      <button ng-click="deleteSet(id)">
+      <button class="delete-set" ng-click="deleteSet(id)">
         <i class="fa fa-times"></i>
       </button>
     </div>
