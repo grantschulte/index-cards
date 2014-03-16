@@ -3,9 +3,15 @@
     <a href="#/profile/{{ auth.user.id }}">
       <h1>IndexCards v1</h1>
     </a>
-    <nav class="user-actions">
+    <nav class="user-actions" ng-class="{ on: ctrlOpen }">
       <a href="#/profile/{{ auth.user.id }}">{{ auth.user.email }}</a>
-      <button ng-click="logout()"><i class="fa fa-gears"></i></button>
+      <button ng-click="toggleCtrl()" ng-class="{ on: ctrlOpen }">
+        <i class="fa fa-bars"></i>
+      </button>
+      <ul>
+        <li ng-click="logout()">Logout</li>
+        <li>Reset Password</li>
+      </ul>
     </nav>
   </div>
 </div>
