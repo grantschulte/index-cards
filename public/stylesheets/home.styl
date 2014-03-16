@@ -35,7 +35,8 @@ section.home
   div.intro
     display:inline-block;
     float:left;
-    width:50%;
+    width:600px;
+    position:relative;
 
     div.index-card
       position                   : relative;
@@ -197,3 +198,29 @@ section.home
         background-color:$blue_o4;
         font-size:18px;
         border-radius:0;
+
+  div.guide
+    position:absolute;
+    top:-3px;
+    right:-50px;
+    padding:15px;
+    font-size:14px;
+    border-radius:5px;
+    color:$red;
+    z-index:5;
+    -webkit-animation: 6s inOut infinite;
+
+    i
+      margin-right:5px;
+
+@-webkit-keyframes inOut
+  0%
+    opacity:0;
+  10%
+    opacity:1;
+  50%
+    opacity:1;
+  90%
+    opacity:1;
+  100%
+    opacity:0;

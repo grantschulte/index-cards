@@ -17,9 +17,13 @@
         <span ng-include="'views/includes/index_card.ejs'"></span>
 
         <div>
-          <div class="front">Term</div>
-          <div class="back">Definition for the term</div>
+          <div class="front">Renaissance</div>
+          <div class="back">The Renaissance was a cultural movement that spanned the period roughly from the 14th to the 17th century, beginning in Italy in the Late Middle Ages and later spreading to the rest of Europe.</div>
         </div>
+      </div>
+
+      <div class="guide" ng-show="!hideGuide">
+        <i class="fa fa-hand-o-up"></i> Click card to flip.
       </div>
     </div>
 
@@ -37,4 +41,5 @@
       </div>
     </div>
   </div>
+
 </section>

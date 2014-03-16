@@ -293,7 +293,8 @@ section.home div.login-errors .errors i {
 section.home div.intro {
   display: inline-block;
   float: left;
-  width: 50%;
+  width: 600px;
+  position: relative;
 }
 section.home div.intro div.index-card {
   position: relative;
@@ -463,6 +464,41 @@ section.home div.login-box div.form-row button.create-btn {
   background-color: rgba(96,192,192,0.4);
   font-size: 18px;
   border-radius: 0;
+}
+section.home div.guide {
+  position: absolute;
+  top: -3px;
+  right: -50px;
+  padding: 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  color: #f06048;
+  z-index: 5;
+  -webkit-animation: 6s inOut infinite;
+}
+section.home div.guide i {
+  margin-right: 5px;
+}
+@-webkit-keyframes inOut {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 section.profile {
   margin-bottom: 0;

@@ -46,6 +46,7 @@ function LoginController( $scope, $rootScope, $location, loginService ) {
   };
 
   $scope.flipCard = function () {
+    $scope.hideGuide = true;
     $scope.cardOn = !$scope.cardOn;
   };
 
