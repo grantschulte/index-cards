@@ -1,4 +1,12 @@
-angular.module('indexCards', ['indexCards.config', 'indexCards.services', 'indexCards.routes', 'simpleLoginTools', 'routeSecurity'])
+angular.module('indexCards', [
+  'indexCards.config', 
+  'indexCards.services', 
+  'indexCards.controllers', 
+  'indexCards.routes', 
+  'indexCards.factories', 
+  'simpleLoginTools', 
+  'routeSecurity'
+])
 
 .run(['loginService', '$rootScope', 'FBURL', function(loginService, $rootScope, FBURL) {
    if( FBURL === 'https://INSTANCE.firebaseio.com' ) {

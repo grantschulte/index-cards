@@ -1,4 +1,6 @@
-function LoginController( $scope, $rootScope, $location, loginService ) {
+angular.module('indexCards.controllers').controller('LoginCtrl', ['$scope', '$rootScope', '$location', 'loginService',
+
+function($scope, $rootScope, $location, loginService) {
 
   var init = function () {
     $scope.email = null;
@@ -73,4 +75,4 @@ function LoginController( $scope, $rootScope, $location, loginService ) {
   }
   
   init();
-};
+}]);

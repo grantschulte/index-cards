@@ -1,4 +1,6 @@
-function HeaderCtrl( $scope, $rootScope, $location, loginService ) {
+angular.module('indexCards.controllers').controller('HeaderCtrl', ['$scope', '$rootScope', '$location', 'loginService',
+
+function($scope, $rootScope, $location, loginService) {
 
   var init = function () {
     $scope.ctrlOpen = false;
@@ -13,4 +15,4 @@ function HeaderCtrl( $scope, $rootScope, $location, loginService ) {
   };
 
   init();
-}
+}]);

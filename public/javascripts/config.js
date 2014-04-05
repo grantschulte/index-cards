@@ -12,5 +12,8 @@ angular.module('indexCards.config', [] )
 // firebase url
 .constant('FBURL', 'https://boiling-fire-4618.firebaseio.com/')
 
+// wordnik api url
+.constant('wordnikUrl', 'http://api.wordnik.com:80/v4/word.json')
+
 // login redirect path
 .constant('loginRedirectPath', '/')

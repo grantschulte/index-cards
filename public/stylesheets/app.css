@@ -271,7 +271,7 @@ header {
   line-height: 60px;
   background-color: #303030;
   color: #fff;
-  overflow: visible;
+  overflow: hidden;
   zoom: 1;
 }
 header:after,

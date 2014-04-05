@@ -1,4 +1,6 @@
-function ProfilesController( $scope, $rootScope, $firebase, $location, $routeParams, FBURL, loginService ) {
+angular.module('indexCards.controllers').controller('ProfilesCtrl', ['$scope', '$rootScope', '$firebase', '$location', '$routeParams', 'FBURL', 'loginService',
+
+function($scope, $rootScope, $firebase, $location, $routeParams, FBURL, loginService) {
 
   var init = function () {
     getProfile();
@@ -31,4 +33,4 @@ function ProfilesController( $scope, $rootScope, $firebase, $location, $routePar
   };
 
   init();
-};
+}]);

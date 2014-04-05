@@ -1,4 +1,4 @@
-<section class="section-row set" ng-controller="SetsController">
+<section class="section-row set" ng-controller="SetsCtrl">
 
   <div class="index-card-header container">
     <div>
@@ -20,6 +20,31 @@
       </a>
     </div>
   </div>
+
+<!--   <div class="find-terms">
+    <input type="text" ng-model="word" placeholder="Find words">
+    <button ng-click="getWords()">Search</button>
+  </div>
+
+  <div ng-hide="wordList.length">
+    Your search returned no results.
+  </div>
+
+  <div ng-show="wordList.length">
+    <h3>
+      {{ wordList[0].word }} 
+      <span class="part-of-speech">({{ wordList[0].partOfSpeech }})</span>
+    </h3>
+
+    <ol class="word-list">
+      <li ng-repeat="term in wordList">
+        <p class="definition">
+          <span class="text">{{ term.text }}</span>
+          <button ng-click="addCard(term.word, term.text)">add</button>
+        </p>
+      </li>
+    </ol>
+  </div> -->
 
   <div class="index-card-container body-container container">
     <div class="scroll" ng-style="scrollLeft()">

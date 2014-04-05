@@ -1,4 +1,6 @@
-function SetsController( $scope, $rootScope, $firebase, $location, $routeParams, FBURL, $timeout, loginService ) {
+angular.module('indexCards.controllers').controller('SetsCtrl', ['$scope', '$rootScope', '$firebase', '$location', '$routeParams', 'FBURL', 'loginService', 'Words', 
+
+function($scope, $rootScope, $firebase, $location, $routeParams, FBURL, loginService, Words) {
 
   var init = function () {
     getProfile();
@@ -17,14 +19,20 @@ function SetsController( $scope, $rootScope, $firebase, $location, $routeParams,
       term: $scope.term,
       definition: $scope.definition
     }).then(
-      function( card ) {
+      function(card) {
         getCards();
         resetAddCards();
       },
-      function ( err ) {
+      function(err) {
         console.log( 'Create Card Failure: ', err );
       }
     );
+  };
+
+  $scope.addCard = function(term, def) {
+    $scope.term = term;
+    $scope.definition = def;
+    $scope.createCard();
   };
 
   $scope.deleteCard = function (id) {
@@ -75,6 +83,15 @@ function SetsController( $scope, $rootScope, $firebase, $location, $routeParams,
     $scope.addCardsOpen = !$scope.addCardsOpen;
   };
 
+  $scope.getWords = function () {
+    var queryWord = $scope.word.toLowerCase();
+
+    Words.query({ word: queryWord })
+      .$promise.then(function(words) {
+        $scope.wordList = words;
+      });
+  };
+
   var getProfile = function () {
     var userRef = new Firebase( FBURL + 'users/' + $routeParams.id );
     $scope.user = $firebase( userRef );
@@ -114,4 +131,4 @@ function SetsController( $scope, $rootScope, $firebase, $location, $routeParams,
   };
 
   init();
-};
+}]);
