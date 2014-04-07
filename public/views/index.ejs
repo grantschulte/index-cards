@@ -28,7 +28,9 @@
   <script src='/javascripts/controllers/sets_controller.js'></script>
 </head>
 <body ng-cloak>
-  <header ng-include="'views/includes/header.ejs'" ng-show-auth="login"></header>
+  <header ng-include="'views/includes/header.ejs'"
+          ng-controller="HeaderCtrl"
+          ng-class="{ login: isLogin() }"></header>
   <section class="wrapper" ng-view></section>
   <footer ng-show-auth="login"></footer>
 </body>

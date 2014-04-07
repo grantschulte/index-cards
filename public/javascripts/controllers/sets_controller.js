@@ -1,6 +1,6 @@
-angular.module('indexCards.controllers').controller('SetsCtrl', ['$scope', '$rootScope', '$firebase', '$location', '$routeParams', 'FBURL', 'loginService', 'Words', 
+angular.module('indexCards.controllers').controller('SetsCtrl', ['$scope', '$rootScope', '$firebase', '$location', '$routeParams', 'FBURL', 'Words', 
 
-function($scope, $rootScope, $firebase, $location, $routeParams, FBURL, loginService, Words) {
+function($scope, $rootScope, $firebase, $location, $routeParams, FBURL, Words) {
 
   var init = function () {
     getProfile();
@@ -35,7 +35,7 @@ function($scope, $rootScope, $firebase, $location, $routeParams, FBURL, loginSer
     $scope.createCard();
   };
 
-  $scope.deleteCard = function (id) {
+  $scope.deleteCard = function(id) {
     $scope.cards.$remove(id);
   };
 
@@ -53,7 +53,7 @@ function($scope, $rootScope, $firebase, $location, $routeParams, FBURL, loginSer
     $scope.cardOn = false;
   };
 
-  $scope.prevCard = function () {
+  $scope.prevCard = function() {
     $scope.addCardsOpen = false;
 
     if ( $scope.currentCard === 1 ) {
@@ -67,41 +67,58 @@ function($scope, $rootScope, $firebase, $location, $routeParams, FBURL, loginSer
     $scope.cardOn = false;
   };
 
-  $scope.scrollLeft = function () {
+  $scope.scrollLeft = function() {
     return {
       left: $scope.scroll_left_px + 'px'
     }
   };
 
-  $scope.flipCard = function (id) {
+  $scope.flipCard = function(id) {
     if ( id + 1 === $scope.currentCard ) {
       $scope.cardOn = !$scope.cardOn;
     }
   };
 
-  $scope.toggleAddCards = function () {
+  $scope.toggleAddCards = function() {
     $scope.addCardsOpen = !$scope.addCardsOpen;
   };
 
-  $scope.getWords = function () {
+  $scope.getWords = function() {
     var queryWord = $scope.word.toLowerCase();
 
-    Words.query({ word: queryWord })
-      .$promise.then(function(words) {
+    Words.query({ word: queryWord }).$promise.then(
+      function(words) {
         $scope.wordList = words;
-      });
+      },
+      function(err) {
+        console.error( 'Cannot find words: ', err );
+      }
+    );
   };
 
-  var getProfile = function () {
+  $scope.editSetName = function() {
+    $scope.set.$update({
+      name: $scope.set.name
+    }).then(
+      function(set) {
+        console.log('success', set);
+      },
+      function ( err ) {
+        console.error( 'Login failed: ', err );
+      }
+    );
+  };
+
+  var getProfile = function() {
     var userRef = new Firebase( FBURL + 'users/' + $routeParams.id );
     $scope.user = $firebase( userRef );
   };
 
-  var getCards = function () {
+  var getCards = function() {
     var setRef = new Firebase( FBURL + 'users/' + $routeParams.id + '/sets/' + $routeParams.setid );
     var cardSnapshot = setRef.child('cards');
 
-    $scope.set = $firebase( setRef );
+    $scope.set = $firebase(setRef);
     $scope.cards = $scope.set.$child('cards');
 
     // Data loaded

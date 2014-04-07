@@ -1,16 +1,17 @@
-<div class="header" ng-controller="HeaderCtrl">
-  <div ng-show-auth="login">
+<div class="header">
+  <div>
     <a href="#/profile/{{ auth.user.id }}">
       <h1>IndexCards v1</h1>
     </a>
-    <nav class="user-actions" ng-class="{ on: ctrlOpen }">
+    
+    <nav ng-show-auth="login" class="user-actions" ng-class="{ on: ctrlOpen }">
       <a href="#/profile/{{ auth.user.id }}">{{ auth.user.email }}</a>
       <button ng-click="toggleCtrl()" ng-class="{ on: ctrlOpen }">
         <i class="fa fa-bars"></i>
       </button>
       <ul>
         <li ng-click="logout()">Logout</li>
-        <li>Reset Password</li>
+        <!-- <li>Reset Password</li> -->
       </ul>
     </nav>
   </div>

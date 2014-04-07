@@ -1,5 +1,4 @@
 <section class="section-row edit-set" ng-controller="SetsCtrl">
-
   <div class="edit-header">
     <div>
       <input type="text" ng-model="set.name">
@@ -9,11 +8,11 @@
     </div>
     <div>
       <button ng-click="editSetName()">
-        <i class="fa fa-pencil-square"></i> 
+        <i class="fa fa-pencil"></i> 
         Rename Set
       </button>
       <a href="#/profile/{{ user.id }}/sets/{{ setId }}">
-        <i class="fa fa-pencil-square"></i> 
+        <i class="fa fa-eye"></i> 
         View Set
       </a>
     </div>
@@ -31,12 +30,9 @@
           <p>{{ card.definition }}</p>
         </div>
         <div class="edit-actions">
-<!--           <i class="fa fa-arrow-up"></i>
-          <i class="fa fa-arrow-down"></i> -->
           <i ng-click="deleteCard(id)" class="fa fa-times"></i>
         </div>
       </li>
     </ul>
   </div>
-
 </section>

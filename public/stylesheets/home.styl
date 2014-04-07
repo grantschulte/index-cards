@@ -1,44 +1,51 @@
-section.home
+section.home {
   height:100%;
   background-color:$blue_back;
   clearfix();
 
-  div.home-header
+  div.home-header {
     width:980px;
     margin:40px auto 20px;
     clearfix();
 
-    h1
+    h1 {
       display:inline-block;
       float:left;
       font-size:24px;
+    }
+  }
 
-  div.home-body
+  div.home-body {    
     width:980px;
-    margin:0 auto;
+    margin:80px auto 0;
+  }
 
-  div.login-errors
+  div.login-errors {
     width:980px;
     margin:0 auto;
     margin-bottom:20px;
 
-    .errors
+    div.errors {
       width:650px;
       font-size:14px;
       background-color:$blue2_o2;
       border-radius:8px;
       padding:15px;
       color:$red;
-      i
-        margin-right:5px;
 
-  div.intro
+      i {
+        margin-right:5px;
+      }
+    }
+  }
+
+  div.intro {
     display:inline-block;
     float:left;
     width:600px;
     position:relative;
 
-    div.index-card
+    div.index-card {
       position                   : relative;
       display:inline-block;
       float:left;
@@ -62,29 +69,33 @@ section.home
       
       z-index:1;
 
-      &.on
+      &.on {
         box-shadow:1px -1px 0 0 rgba(0,0,0,0.1);
         transform         : rotateX(180deg);
         -webkit-transform : rotateX(180deg);
         transition                 : all .4s ease-in-out;
         -webkit-transition         : all .4s ease-in-out;
 
-        div.front
+        div.front {
           opacity            : 0;
           -webkit-transition : all 0.2s ease-in-out;
+        }
 
-        div.back
+        div.back {
           opacity            : 1;
           -webkit-transition : all 0.2s ease-in-out;
           -webkit-transition-delay : .1s;
+        }
+      }
 
       div.front,
-      div.back
+      div.back {
         margin: 0;
         height: 300px;
         line-height: 100px;
+      }
 
-      div.front
+      div.front {
         position           : absolute;
         top                : 0;
         left               : 0;
@@ -101,8 +112,9 @@ section.home
 
         -webkit-transition : all 0.2s ease-in-out;
         -webkit-transition-delay : .1s;
+      }
 
-      div.back
+      div.back {
         position: absolute;
         top: 0;
         left: 0;
@@ -119,23 +131,31 @@ section.home
 
         transform          : rotateX(-180deg);
         -webkit-transform  : rotateX(-180deg);
+      }
 
-      svg
+      svg {
         position : absolute;
         top      : 0;
         left     : 0;
         width    : 100%;
         height   : 100%;
-      line
-        stroke-linecap : butt;
-      line
-        stroke       : #F05E4D;
-        stroke-width : .5;
-      line
-        stroke       : #2CDEF2;
-        stroke-width : .5;
 
-  div.login-box
+        line {
+          stroke-linecap : butt;
+        }
+        line {
+          stroke       : #F05E4D;
+          stroke-width : .5;
+        }
+        line {
+          stroke       : #2CDEF2;
+          stroke-width : .5;
+        }
+      }
+    }
+  }
+
+  div.login-box {
     position:relative;
     display:inline-block;
     float:right;
@@ -145,80 +165,97 @@ section.home
     width:340px
     margin-top:20px;
     padding:30px 30px 30px 37px;
-    background-color:$blue2_o2;
+    background-color:rgba(255,255,255,0.1);
     overflow:hidden;
 
-    div.button-row
-      clearfix();
+    :-moz-placeholder {
+      color:#fff;
+    }
+
+    :-ms-input-placeholder {
+      color:#fff;
+    }
+
+    ::-webkit-input-placeholder {
+      color:#fff;
+    }
+
+    div.button-row {
       position:absolute;
       top:0;
       left:0;
       width:100%;
+      clearfix();
 
-      button
+      button {
         height:60px;
         padding:0 20px;
         width:50%;
         display:inline-block;
         float:left;
-        background-color:$blue_o2;
+        background-color:rgba(255,255,255,0.1);
         border-radius:0;
         font-size:18px;
+        color:#fff;
 
-        &.active
+        &.active {
           background-color:transparent;
+        }
+      }
+    }
 
-    div.form-row
+    div.form-row {
       margin-top:70px;
-      label
+
+      label {
         display:block;
         width:100%;
         margin-bottom:5px;
+      }
 
-      input
+      input {
         width:100%;
         height:50px;
         font-size:16px;
-        color:#222;
+        color:#fff;
         border-radius:0;
-        background-color:$blue2_o2;
+        background-color:rgba(255,255,255,0.2);
         margin-bottom:10px;
         padding-left:15px;
+      }
 
-      input[type='password']
+      input[type="password"] {
         border-radius:0;
-        background-color:$blue2_o2;
+        background-color:rgba(255,255,255,0.2);
+      }
 
-      button.create-btn
+      button.create-btn {
         position:absolute;
         bottom:0;
         left:0;
         width:100%;
         height:60px;
-        background-color:$blue_o4;
+        background-color:rgba(255,255,255,0.2);
+        color:#fff;
         font-size:18px;
         border-radius:0;
+      }
+    }
+  }
 
-  div.guide
+  div.guide {
     position:absolute;
     top:-3px;
     right:-50px;
     padding:15px;
     font-size:14px;
     border-radius:5px;
-    color:$red;
+    color:$blue2;
     z-index:5;
     -webkit-animation: 4s inOut infinite;
 
-    i
+    i {
       margin-right:5px;
-
-@-webkit-keyframes inOut
-  0%
-    opacity:0;
-  15%
-    opacity:1;
-  85%
-    opacity:1;
-  100%
-    opacity:0;
+    }
+  }
+}

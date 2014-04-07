@@ -6,6 +6,10 @@ function($scope, $rootScope, $location, loginService) {
     $scope.ctrlOpen = false;
   };
 
+  $scope.isLogin = function() {
+    if ( $location.$$path === '/' ) { return true; }
+  };
+
   $scope.logout = function () {
     loginService.logout();
   };

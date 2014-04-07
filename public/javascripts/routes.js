@@ -23,6 +23,10 @@ angular.module('indexCards.routes', ['ngRoute'])
     })
     .when( '/profile/:id/sets/:setid', {
       authRequired: true,
-      templateUrl : '../views/show.ejs'
+      templateUrl : '../views/cards.ejs'
+    })
+    .when( '/profile/:id/sets/:setid/search', {
+      authRequired: true,
+      templateUrl : '../views/search.ejs'
     })
 });
