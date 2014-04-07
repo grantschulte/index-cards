@@ -17,13 +17,12 @@ section.home {
 
   div.home-body {    
     width:980px;
-    margin:80px auto 0;
+    margin:40px auto 0;
   }
 
   div.login-errors {
     width:980px;
     margin:0 auto;
-    margin-bottom:20px;
 
     div.errors {
       width:650px;
@@ -46,7 +45,7 @@ section.home {
     position:relative;
 
     div.index-card {
-      position                   : relative;
+      position: relative;
       display:inline-block;
       float:left;
       height                     : 400px;
@@ -60,8 +59,8 @@ section.home {
       box-shadow:1px 1px 1px 0 rgba(0,0,0,0.08);
       z-index:1;
 
-      transition                 : all .4s ease-in-out;
-      -webkit-transition         : all .4s ease-in-out;
+      transEaseInOut(400ms);
+
       perspective                : 100px;
       perspective-origin         : 50%;
       -webkit-perspective        : 100px;
@@ -73,17 +72,16 @@ section.home {
         box-shadow:1px -1px 0 0 rgba(0,0,0,0.1);
         transform         : rotateX(180deg);
         -webkit-transform : rotateX(180deg);
-        transition                 : all .4s ease-in-out;
-        -webkit-transition         : all .4s ease-in-out;
+        transEaseInOut(400ms);
 
         div.front {
           opacity            : 0;
-          -webkit-transition : all 0.2s ease-in-out;
+          transEaseInOut(200ms);
         }
 
         div.back {
           opacity            : 1;
-          -webkit-transition : all 0.2s ease-in-out;
+          transEaseInOut(200ms);
           -webkit-transition-delay : .1s;
         }
       }
@@ -110,7 +108,7 @@ section.home {
         opacity            : 1;
         color              : #444;
 
-        -webkit-transition : all 0.2s ease-in-out;
+        transEaseInOut(200ms);
         -webkit-transition-delay : .1s;
       }
 
@@ -165,19 +163,13 @@ section.home {
     width:340px
     margin-top:20px;
     padding:30px 30px 30px 37px;
-    background-color:rgba(255,255,255,0.1);
+    background-color:$blue2_o2;
     overflow:hidden;
 
-    :-moz-placeholder {
-      color:#fff;
-    }
-
-    :-ms-input-placeholder {
-      color:#fff;
-    }
-
+    :-moz-placeholder,
+    :-ms-input-placeholder,
     ::-webkit-input-placeholder {
-      color:#fff;
+      color:$dark;
     }
 
     div.button-row {
@@ -193,10 +185,10 @@ section.home {
         width:50%;
         display:inline-block;
         float:left;
-        background-color:rgba(255,255,255,0.1);
+        background-color:$blue2_o2;
         border-radius:0;
         font-size:18px;
-        color:#fff;
+        color:$dark;
 
         &.active {
           background-color:transparent;
@@ -217,16 +209,17 @@ section.home {
         width:100%;
         height:50px;
         font-size:16px;
-        color:#fff;
+        color:$dark;
         border-radius:0;
-        background-color:rgba(255,255,255,0.2);
+        background-color:$blue2_o2;
         margin-bottom:10px;
         padding-left:15px;
       }
 
       input[type="password"] {
         border-radius:0;
-        background-color:rgba(255,255,255,0.2);
+        background-color:$blue2_o2;
+        color:$dark;
       }
 
       button.create-btn {
@@ -235,8 +228,8 @@ section.home {
         left:0;
         width:100%;
         height:60px;
-        background-color:rgba(255,255,255,0.2);
-        color:#fff;
+        background-color:$blue2_o2;
+        color:$dark;
         font-size:18px;
         border-radius:0;
       }
