@@ -11,6 +11,7 @@ function($scope, $rootScope, $firebase, $location, $routeParams, Words, firebase
     $scope.scroll_left_px = 0;
     $scope.scroll_left = { left: $scope.scroll_left_px + 'px' };
     $scope.setId = $routeParams.setid;
+    $scope.page = 'Search';
   };
 
   $scope.createCard = function() {

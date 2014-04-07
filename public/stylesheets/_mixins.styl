@@ -1,11 +1,14 @@
-clearfix()
-  zoom 1
-  &:after
-  &:before
-    content ""
-    display table
-  &:after
-    clear both
+clearfix() {  
+  zoom: 1;
+  &:after,
+  &:before {    
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
 
 transCubicBez(speed) {
   -webkit-transition: all speed cubic-bezier(0.23, 1, 0.32, 1);

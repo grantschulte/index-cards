@@ -17,4 +17,4 @@ angular.module('indexCards.factories', ['ngResource'])
     includeTags : false,
     api_key : 'c5514170aa3ba04d9f1da262f5a002a7ecf3a89b5133cd5ad'
   });
-}]);
+}])

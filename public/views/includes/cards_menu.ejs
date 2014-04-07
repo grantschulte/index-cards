@@ -1,16 +1,23 @@
 <div ng-show="setLength > 0" class="index-card-number">
   {{ currentCard }} / {{ setLength }}
 </div>
-<a href="#/profile/{{ user.id }}">
+<a href="#/profile/{{ user.id }}"
+   ng-class="{ active: title === 'Profile' }">
   <i class="fa fa-folder-open"></i>
 </a>
 <button ng-class="{ active: addCardsOpen }" 
         ng-click="toggleAddCards()">
   <i class="fa fa-plus"></i>
 </button>
-<a href="#/profile/{{ user.id }}/sets/{{ setId }}/edit">
+<a href="#/profile/{{ user.id }}/sets/{{ setId }}/edit"
+   ng-class="{ active: title === 'Edit' }">
   <i class="fa fa-pencil"></i>
 </a>
-<a href="#/profile/{{ user.id }}/sets/{{ setId }}/search">
+<a href="#/profile/{{ user.id }}/sets/{{ setId }}/search"
+   ng-class="{ active: title === 'Search' }">
   <i class="fa fa-search-plus"></i>
+</a>
+<a href="#/profile/{{ user.id }}/sets/{{ setId }}"
+   ng-class="{ active: title === 'Cards' }">
+  <i class="fa fa-eye"></i>
 </a>

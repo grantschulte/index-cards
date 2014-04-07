@@ -19,5 +19,10 @@ angular.module('indexCards', [
     $rootScope.auth = loginService.init('/');
     $rootScope.FBURL = FBURL;
   }
-}]);
+}])
 
+.run(function($rootScope){
+  $rootScope.$on("$routeChangeSuccess", function(event, currentRoute, previousRoute) {
+      $rootScope.title = currentRoute.title;
+  });
+});

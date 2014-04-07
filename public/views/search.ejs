@@ -1,5 +1,4 @@
 <section class="section-row search" ng-controller="SetsCtrl">
-
   <div class="index-card-header container">
     <div><h1>{{ set.name }}</h1></div>
     <div ng-include="'views/includes/cards_menu.ejs'"></div>
@@ -25,7 +24,9 @@
         <li ng-repeat="term in wordList">
           <p class="definition">
             <span class="text">{{ term.text }}</span>
-            <button ng-click="addCard(term.word, term.text)">add</button>
+            <button ng-click="addCard(term.word, term.text)" class="add-word">
+              <i class="fa fa-plus"></i> Add
+            </button>
           </p>
         </li>
       </ol>
