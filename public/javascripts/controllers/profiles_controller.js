@@ -1,13 +1,13 @@
-angular.module('indexCards.controllers').controller('ProfilesCtrl', ['$scope', '$rootScope', '$firebase', '$location', '$routeParams', 'FBURL', 'loginService',
+angular.module('indexCards.controllers').controller('ProfilesCtrl', ['$scope', '$rootScope', '$firebase', '$routeParams', 'loginService', 'firebaseRef',
 
-function($scope, $rootScope, $firebase, $location, $routeParams, FBURL, loginService) {
+function($scope, $rootScope, $firebase, $routeParams, loginService, firebaseRef) {
 
   var init = function () {
     getProfile();
   }
 
-  $scope.createSet = function () {
-    if ( !$scope.set ) { return false; }
+  $scope.createSet = function() {
+    if (!$scope.set) { return false; }
 
     $scope.sets.$add({
       name: $scope.set,
@@ -16,19 +16,19 @@ function($scope, $rootScope, $firebase, $location, $routeParams, FBURL, loginSer
       function( set ) {
         $scope.set = '';
       },
-      function ( err ) {
-        console.error( 'Login failed: ', err );
+      function(err) {
+        console.error('Login failed: ', err);
       }
     );
   };
 
-  $scope.deleteSet = function ( id ) {
-    $scope.sets.$remove( id );
+  $scope.deleteSet = function(id) {
+    $scope.sets.$remove(id);
   };
 
   var getProfile = function () {
-    var userRef = new Firebase( FBURL + 'users/' + $routeParams.id );
-    $scope.user = $firebase( userRef );
+    var userRef = firebaseRef('users/' + $routeParams.id);
+    $scope.user = $firebase(userRef);
     $scope.sets = $scope.user.$child('sets');
   };
 

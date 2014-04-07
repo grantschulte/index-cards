@@ -1,11 +1,10 @@
-angular.module('indexCards.controllers').controller('SetsCtrl', ['$scope', '$rootScope', '$firebase', '$location', '$routeParams', 'FBURL', 'Words', 
+angular.module('indexCards.controllers').controller('SetsCtrl', ['$scope', '$rootScope', '$firebase', '$location', '$routeParams', 'Words', 'firebaseRef', 
 
-function($scope, $rootScope, $firebase, $location, $routeParams, FBURL, Words) {
+function($scope, $rootScope, $firebase, $location, $routeParams, Words, firebaseRef) {
 
-  var init = function () {
+  var init = function() {
     getProfile();
     getCards();
-    setView();
 
     $scope.currentCard = 1;
     $scope.cardOn = false;
@@ -14,7 +13,7 @@ function($scope, $rootScope, $firebase, $location, $routeParams, FBURL, Words) {
     $scope.setId = $routeParams.setid;
   };
 
-  $scope.createCard = function () {
+  $scope.createCard = function() {
     $scope.cards.$add({
       term: $scope.term,
       definition: $scope.definition
@@ -40,46 +39,35 @@ function($scope, $rootScope, $firebase, $location, $routeParams, FBURL, Words) {
   };
 
   $scope.nextCard = function () {
-    $scope.addCardsOpen = false;
+    resetAddCards();
 
-    if ( $scope.currentCard === $scope.setLength ) {
-      return false
-    }
-    else {
-      $scope.scroll_left_px = $scope.scroll_left_px - 670;
-    }
-
+    if ($scope.currentCard === $scope.setLength) { return false; }
+    
+    $scope.scroll_left_px = $scope.scroll_left_px - 670;
     $scope.currentCard += 1;
     $scope.cardOn = false;
   };
 
   $scope.prevCard = function() {
-    $scope.addCardsOpen = false;
+    resetAddCards();
 
-    if ( $scope.currentCard === 1 ) {
-      return false;
-    }
-    else {
-      $scope.scroll_left_px = $scope.scroll_left_px + 670;
-    }
-
+    if ($scope.currentCard === 1) { return false; }
+    
+    $scope.scroll_left_px = $scope.scroll_left_px + 670;
     $scope.currentCard -= 1;
     $scope.cardOn = false;
   };
 
   $scope.scrollLeft = function() {
-    return {
-      left: $scope.scroll_left_px + 'px'
-    }
+    return { left: $scope.scroll_left_px + 'px' }
   };
 
   $scope.flipCard = function(id) {
-    if ( id + 1 === $scope.currentCard ) {
-      $scope.cardOn = !$scope.cardOn;
-    }
+    if (id + 1 === $scope.currentCard) { $scope.cardOn = !$scope.cardOn; }
   };
 
   $scope.toggleAddCards = function() {
+    if (!$scope.setLength) { return false; }
     $scope.addCardsOpen = !$scope.addCardsOpen;
   };
 
@@ -91,7 +79,7 @@ function($scope, $rootScope, $firebase, $location, $routeParams, FBURL, Words) {
         $scope.wordList = words;
       },
       function(err) {
-        console.error( 'Cannot find words: ', err );
+        console.error('Cannot find words: ', err);
       }
     );
   };
@@ -103,45 +91,44 @@ function($scope, $rootScope, $firebase, $location, $routeParams, FBURL, Words) {
       function(set) {
         console.log('success', set);
       },
-      function ( err ) {
-        console.error( 'Login failed: ', err );
+      function(err) {
+        console.error('Login failed: ', err);
       }
     );
   };
 
   var getProfile = function() {
-    var userRef = new Firebase( FBURL + 'users/' + $routeParams.id );
-    $scope.user = $firebase( userRef );
+    var userRef = firebaseRef('users/' + $routeParams.id );
+    $scope.user = $firebase(userRef);
   };
 
   var getCards = function() {
-    var setRef = new Firebase( FBURL + 'users/' + $routeParams.id + '/sets/' + $routeParams.setid );
+    var setRef = firebaseRef('users/' + $routeParams.id + '/sets/' + $routeParams.setid );
     var cardSnapshot = setRef.child('cards');
 
     $scope.set = $firebase(setRef);
     $scope.cards = $scope.set.$child('cards');
 
     // Data loaded
-    $scope.cards.$on( 'loaded', function () {
+    $scope.cards.$on( 'loaded', function() {
       console.log( 'Cardset Loaded' );
       $scope.dataLoaded = true;
     });
 
     // Gets length of set
-    cardSnapshot.once('value', function ( snapshot ) {
+    cardSnapshot.once('value', function(snapshot) {
       $scope.setLength = snapshot.numChildren();
+      setView();
     });
   };
 
   // Opens add cards template if set is empty
-  var setView = function () {
-    if ( $scope.setLength === 0 || $scope.setLength === undefined ) {
-      $scope.addCardsOpen = true;
-    }
+  var setView = function() {
+    if (!$scope.setLength) { $scope.addCardsOpen = true; }
   };
 
   // Reset add cards template after card is created
-  var resetAddCards = function () {
+  var resetAddCards = function() {
     $scope.addCardsOpen = false;
     $scope.term = '';
     $scope.definition = '';

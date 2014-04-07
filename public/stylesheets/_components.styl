@@ -1,0 +1,78 @@
+// Components
+// ----------------------------------------------------------------------------
+
+// Cards Header
+div.index-card-header {
+  width: 100%;
+  margin: 0 auto;
+  color: $dark;
+  overflow: visible;
+  padding: 0;
+  height: 60px;
+  position: relative;
+  background-color: $blue;
+  z-index: 5;
+
+  > div:first-child {      
+    display:inline-block;
+    float:left;
+    width:100%;
+    clearfix();
+
+    h1 {        
+      display: inline-block;
+      float: left;
+      padding: 0;
+      padding-left: 20px;
+      margin: 0;
+      text-align: left;
+      font-size: 22px;
+      font-weight: normal;
+      height: 60px;
+      line-height: 60px;
+    }
+  }
+
+  > div:last-child {
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    top: 0;
+    clearfix();
+
+    div.index-card-number {
+      display:inline-block;
+      float:left;
+      width:80px;
+      line-height: 60px;
+      text-align:center;
+      height:60px;
+      background-color:$blue_o2;
+    }
+
+    button,
+    a {        
+      position:relative;
+      display:inline-block;
+      float:left;
+      margin:0;
+      width:60px;
+      height:60px;
+      border-radius:0;
+      background-color:$blue_o4;
+      font-size:22px;
+      border-left:1px solid rgba(0,0,0,0.05);
+
+      &:hover,
+      &.active {
+        background-color:$blue_o6;
+      }
+    }
+
+    a {        
+      color:$dark;
+      text-align:center;
+      line-height:60px;
+    }
+  }
+}

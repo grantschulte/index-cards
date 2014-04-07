@@ -2,7 +2,7 @@
   <div class="edit-header">
     <div>
       <input type="text" ng-model="set.name">
-      <div ng-show="setLength > 0" class="index-card-number">
+      <div ng-show="setLength" class="index-card-number">
           {{ setLength }} Cards
       </div>
     </div>
@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <div class="edit-set-zero body-container" ng-show="setLength === 0">
+  <div class="edit-set-zero body-container" ng-show="!setLength">
     <p>You don't have any cards in this set. <a href="#/profile/{{ user.id }}/sets/{{ setId }}">Create some.</a></p>
   </div>
 

@@ -1,10 +1,12 @@
-button
-	font: normal 18px 'Actor' sans-serif;
-	background: transparent;
-	border-radius:0;
-	-webkit-transition:all 0.3s ease-in-out;
-	transition:all 0.3s ease-in-out;
+button {  
+  font-family:'Actor' sans-serif;
+  font-weight:normal;
+  font-size:18px;
+  background: transparent;
+  border-radius:0;
+  transEaseInOut(300ms);
 
-	&:hover
-		-webkit-transition:all 0.3s ease-in-out;
-		transition:all 0.3s ease-in-out;
+  &:hover {    
+    transEaseInOut(300ms);
+  }
+}
