@@ -7,7 +7,7 @@ function($scope, $rootScope, $location, loginService) {
   };
 
   $scope.isLogin = function() {
-    if ( $location.$$path === '/' ) { return true; }
+    if ($location.$$path === '/') { return true; }
   };
 
   $scope.logout = function () {

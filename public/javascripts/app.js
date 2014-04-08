@@ -9,7 +9,7 @@ angular.module('indexCards', [
 ])
 
 .run(['loginService', '$rootScope', 'FBURL', function(loginService, $rootScope, FBURL) {
-  if( FBURL === 'https://INSTANCE.firebaseio.com' ) {
+  if (FBURL === 'https://INSTANCE.firebaseio.com') {
     angular.element(document.body).html('<h1>Please configure app/js/config.js before running!</h1>');
     setTimeout(function() {
       angular.element(document.body).removeClass('hide');
@@ -26,3 +26,4 @@ angular.module('indexCards', [
       $rootScope.title = currentRoute.title;
   });
 });
+

@@ -1,6 +1,6 @@
-angular.module('indexCards.controllers').controller('ProfilesCtrl', ['$scope', '$rootScope', '$firebase', '$routeParams', 'loginService', 'firebaseRef',
+angular.module('indexCards.controllers').controller('ProfilesCtrl', ['$scope', '$rootScope', '$firebase', '$routeParams', 'loginService', 'User',
 
-function($scope, $rootScope, $firebase, $routeParams, loginService, firebaseRef) {
+function($scope, $rootScope, $firebase, $routeParams, loginService, User) {
 
   var init = function () {
     getProfile();
@@ -27,8 +27,7 @@ function($scope, $rootScope, $firebase, $routeParams, loginService, firebaseRef)
   };
 
   var getProfile = function () {
-    var userRef = firebaseRef('users/' + $routeParams.id);
-    $scope.user = $firebase(userRef);
+    $scope.user = User.get($routeParams.id);
     $scope.sets = $scope.user.$child('sets');
   };
 

@@ -1,6 +1,6 @@
-angular.module('indexCards.controllers').controller('SetsCtrl', ['$scope', '$rootScope', '$firebase', '$location', '$routeParams', 'Words', 'firebaseRef', 
+angular.module('indexCards.controllers').controller('SetsCtrl', ['$scope', '$rootScope', '$firebase', '$location', '$routeParams', 'Words', 'Set', 'User', 
 
-function($scope, $rootScope, $firebase, $location, $routeParams, Words, firebaseRef) {
+function($scope, $rootScope, $firebase, $location, $routeParams, Words, Set, User) {
 
   var init = function() {
     getProfile();
@@ -15,18 +15,9 @@ function($scope, $rootScope, $firebase, $location, $routeParams, Words, firebase
   };
 
   $scope.createCard = function() {
-    $scope.cards.$add({
-      term: $scope.term,
-      definition: $scope.definition
-    }).then(
-      function(card) {
-        getCards();
-        resetAddCards();
-      },
-      function(err) {
-        console.log( 'Create Card Failure: ', err );
-      }
-    );
+    Set.createCard($scope.term, $scope.definition);
+    getCards();
+    resetAddCards();
   };
 
   $scope.addCard = function(term, def) {
@@ -86,37 +77,25 @@ function($scope, $rootScope, $firebase, $location, $routeParams, Words, firebase
   };
 
   $scope.editSetName = function() {
-    $scope.set.$update({
-      name: $scope.set.name
-    }).then(
-      function(set) {
-        console.log('success', set);
-      },
-      function(err) {
-        console.error('Login failed: ', err);
-      }
-    );
+    Set.rename($scope.set.name);
   };
 
   var getProfile = function() {
-    var userRef = firebaseRef('users/' + $routeParams.id );
-    $scope.user = $firebase(userRef);
+    $scope.user = User.get($routeParams.id);
   };
 
   var getCards = function() {
-    var setRef = firebaseRef('users/' + $routeParams.id + '/sets/' + $routeParams.setid );
-    var cardSnapshot = setRef.child('cards');
-
-    $scope.set = $firebase(setRef);
+    $scope.set = Set.get($routeParams.id, $routeParams.setid);
     $scope.cards = $scope.set.$child('cards');
 
     // Data loaded
-    $scope.cards.$on( 'loaded', function() {
-      console.log( 'Cardset Loaded' );
-      $scope.dataLoaded = true;
-    });
+    // $scope.cards.$on('loaded', function() {
+    //   $scope.dataLoaded = true;
+    // });
 
     // Gets length of set
+    var cardSnapshot = Set.getCardSnapshot();
+    
     cardSnapshot.once('value', function(snapshot) {
       $scope.setLength = snapshot.numChildren();
       setView();
