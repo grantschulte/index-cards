@@ -24,6 +24,8 @@ angular.module('indexCards.factories', ['ngResource'])
 .factory('Set', ['FBURL', '$firebase', function(FBURL, $firebase) {
   var fbref = null;
   var _ref = null;
+  var _uid = null;
+  var _setid = null;
 
   return {
     get: function(uid, setid) {
@@ -63,6 +65,38 @@ angular.module('indexCards.factories', ['ngResource'])
           console.error('Rename Failed: ', err);
         }
       );
+    }
+  };
+}])
+
+// Sets Factory
+.factory('Sets', ['FBURL', '$firebase', function(FBURL, $firebase) {
+  var fbref = null;
+  var _ref = null;
+
+  return {
+    get: function(uid) {
+      fbref = new Firebase(FBURL + 'users/' + uid + '/sets/');
+      _ref = $firebase(fbref);
+      return _ref;
+    },
+
+    createSet: function(set) {
+      _ref.$add({
+        name: set,
+        cards: false
+      }).then(
+        function(set) {
+          console.log('Set created');
+        },
+        function(err) {
+          console.error('Login failed: ', err);
+        }
+      );
+    },
+
+    remove: function(id) {
+      _ref.$remove(id);
     }
   };
 }])

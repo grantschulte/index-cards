@@ -1,6 +1,6 @@
-angular.module('indexCards.controllers').controller('ProfilesCtrl', ['$scope', '$rootScope', '$firebase', '$routeParams', 'loginService', 'User',
+angular.module('indexCards.controllers').controller('ProfilesCtrl', ['$scope', '$rootScope', '$firebase', '$routeParams', 'loginService', 'User', 'Sets',
 
-function($scope, $rootScope, $firebase, $routeParams, loginService, User) {
+function($scope, $rootScope, $firebase, $routeParams, loginService, User, Sets) {
 
   var init = function () {
     getProfile();
@@ -8,27 +8,18 @@ function($scope, $rootScope, $firebase, $routeParams, loginService, User) {
 
   $scope.createSet = function() {
     if (!$scope.set) { return false; }
-
-    $scope.sets.$add({
-      name: $scope.set,
-      cards: false
-    }).then(
-      function( set ) {
-        $scope.set = '';
-      },
-      function(err) {
-        console.error('Login failed: ', err);
-      }
-    );
+    Sets.createSet($scope.set);
+    $scope.set = '';
   };
 
   $scope.deleteSet = function(id) {
-    $scope.sets.$remove(id);
+    Sets.remove(id);
   };
 
   var getProfile = function () {
-    $scope.user = User.get($routeParams.id);
-    $scope.sets = $scope.user.$child('sets');
+    var uid = $routeParams.id;
+    $scope.user = User.get(uid);
+    $scope.sets = Sets.get(uid);
   };
 
   init();
