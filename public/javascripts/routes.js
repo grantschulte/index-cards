@@ -34,9 +34,3 @@ angular.module('indexCards.routes', ['ngRoute'])
       title: 'Search'
     })
 })
-
-.run(function($rootScope) {
-  $rootScope.$on("$routeChangeSuccess", function(event, currentRoute, previousRoute) {
-    $rootScope.title = currentRoute.title;
-  });
-});

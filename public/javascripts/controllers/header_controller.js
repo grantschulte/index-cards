@@ -1,6 +1,6 @@
-angular.module('indexCards.controllers').controller('HeaderCtrl', ['$scope', '$rootScope', '$location', 'loginService',
+angular.module('indexCards.controllers').controller('HeaderCtrl', ['$scope', '$rootScope', '$location', 
 
-function($scope, $rootScope, $location, loginService) {
+function($scope, $rootScope, $location) {
 
   var init = function () {
     $scope.ctrlOpen = false;

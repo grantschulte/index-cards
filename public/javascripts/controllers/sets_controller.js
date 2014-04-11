@@ -1,33 +1,25 @@
-angular.module('indexCards.controllers').controller('SetsCtrl', ['$scope', '$rootScope', '$firebase', '$location', '$routeParams', 'Words', 'Set', 'User', 
+angular.module('indexCards.controllers').controller('SetsCtrl', ['$scope', '$rootScope', '$routeParams', 'Words', 'Set', 'Profile', 'Cards',  
 
-function($scope, $rootScope, $firebase, $location, $routeParams, Words, Set, User) {
+function($scope, $rootScope, $routeParams, Words, Set, Profile, Cards) {
 
   var init = function() {
+    $scope.uid = $routeParams.id;
+    $scope.setid = $routeParams.setid;
+
     getProfile();
+    getSet();
     getCards();
 
     $scope.currentCard = 1;
     $scope.cardOn = false;
     $scope.scroll_left_px = 0;
     $scope.scroll_left = { left: $scope.scroll_left_px + 'px' };
-    $scope.setId = $routeParams.setid;
-    $scope.page = 'Search';
   };
 
   $scope.createCard = function() {
-    Set.createCard($scope.term, $scope.definition);
-    getCards();
+    Cards.create($scope.term, $scope.definition);
+    getSet();
     resetAddCards();
-  };
-
-  $scope.addCard = function(term, def) {
-    $scope.term = term;
-    $scope.definition = def;
-    $scope.createCard();
-  };
-
-  $scope.deleteCard = function(id) {
-    $scope.cards.$remove(id);
   };
 
   $scope.nextCard = function () {
@@ -63,35 +55,12 @@ function($scope, $rootScope, $firebase, $location, $routeParams, Words, Set, Use
     $scope.addCardsOpen = !$scope.addCardsOpen;
   };
 
-  $scope.getWords = function() {
-    var queryWord = $scope.word.toLowerCase();
-
-    Words.query({ word: queryWord }).$promise.then(
-      function(words) {
-        $scope.wordList = words;
-      },
-      function(err) {
-        console.error('Cannot find words: ', err);
-      }
-    );
-  };
-
-  $scope.editSetName = function() {
-    Set.rename($scope.set.name);
-  };
-
   var getProfile = function() {
-    $scope.user = User.get($routeParams.id);
+    $scope.profile = Profile.get($routeParams.id);
   };
 
-  var getCards = function() {
-    $scope.set = Set.get($routeParams.id, $routeParams.setid);
-    $scope.cards = $scope.set.$child('cards');
-
-    // Data loaded
-    // $scope.cards.$on('loaded', function() {
-    //   $scope.dataLoaded = true;
-    // });
+  var getSet = function() {
+    $scope.set = Set.get($scope.uid, $scope.setid);
 
     // Gets length of set
     var cardSnapshot = Set.getCardSnapshot();
@@ -101,6 +70,10 @@ function($scope, $rootScope, $firebase, $location, $routeParams, Words, Set, Use
       setView();
     });
   };
+
+  var getCards = function() {
+    $scope.cards = Cards.get($scope.uid, $scope.setid);
+  };  
 
   // Opens add cards template if set is empty
   var setView = function() {

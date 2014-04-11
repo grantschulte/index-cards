@@ -20,12 +20,10 @@ angular.module('indexCards.factories', ['ngResource'])
   });
 }])
 
-// Sets Factory
+// Set Factory
 .factory('Set', ['FBURL', '$firebase', function(FBURL, $firebase) {
   var fbref = null;
   var _ref = null;
-  var _uid = null;
-  var _setid = null;
 
   return {
     get: function(uid, setid) {
@@ -33,27 +31,6 @@ angular.module('indexCards.factories', ['ngResource'])
       _ref = $firebase(fbref);
       return _ref;
     },
-
-    getCardSnapshot: function() {
-      return fbref.child('cards');
-    },
-
-    createCard: function(term, def) {
-      var cards = _ref.$child('cards');
-
-      cards.$add({
-        term: term,
-        definition: def
-      }).then(
-        function(card) {
-          console.log('Success');
-        },
-        function(err) {
-          console.log('Create Card Failure: ', err);
-        }
-      );
-    },
-
     rename: function(name) {
       _ref.$update({
         name: name
@@ -65,6 +42,9 @@ angular.module('indexCards.factories', ['ngResource'])
           console.error('Rename Failed: ', err);
         }
       );
+    },
+    getCardSnapshot: function() {
+      return fbref.child('cards');
     }
   };
 }])
@@ -80,8 +60,7 @@ angular.module('indexCards.factories', ['ngResource'])
       _ref = $firebase(fbref);
       return _ref;
     },
-
-    createSet: function(set) {
+    create: function(set) {
       _ref.$add({
         name: set,
         cards: false
@@ -94,7 +73,39 @@ angular.module('indexCards.factories', ['ngResource'])
         }
       );
     },
+    remove: function(id) {
+      _ref.$remove(id);
+    }
+  };
+}])
 
+// Cards Factory
+.factory('Cards', ['FBURL', '$firebase', function(FBURL, $firebase) {
+  var fbref = null;
+  var _ref = null;
+
+  return {
+    get: function(uid, setid) {
+      _uid = uid;
+      _setid = setid;
+
+      fbref = new Firebase(FBURL + 'users/' + uid + '/sets/' + setid + '/cards');
+      _ref = $firebase(fbref);
+      return _ref;
+    },
+    create: function(term, def) {
+      _ref.$add({
+        term: term,
+        definition: def
+      }).then(
+        function(card) {
+          console.log('Success');
+        },
+        function(err) {
+          console.log('Create Card Failure: ', err);
+        }
+      );
+    },
     remove: function(id) {
       _ref.$remove(id);
     }
@@ -102,7 +113,7 @@ angular.module('indexCards.factories', ['ngResource'])
 }])
 
 // User Factory
-.factory('User', ['FBURL', '$firebase', function(FBURL, $firebase) {
+.factory('Profile', ['FBURL', '$firebase', function(FBURL, $firebase) {
   return {
     get: function(uid) {
       return $firebase(new Firebase(FBURL + 'users/' + uid));

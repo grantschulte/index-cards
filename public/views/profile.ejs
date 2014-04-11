@@ -1,20 +1,20 @@
-<section class="section-row profile" ng-controller="ProfilesCtrl">
+<section class="section-row profile" ng-controller="ProfileCtrl">
   <div class="profile-header container">
     <div>
-      <input type="text" ng-model="set" placeholder="Set title">
+      <input type="text" ng-model="setname" placeholder="Set title">
     </div>
     <div>
       <button ng-click="createSet()"><i class="fa fa-plus-square"></i> Create Set</button>
     </div>
   </div>
 
-  <div class="profile-zero body-container" ng-show="!user.sets">
+  <div class="profile-zero body-container" ng-show="!profile.sets">
     <p>You don't have any card sets. Create one!</p>
   </div>
 
-  <div class="cardsets body-container section-row" ng-show="user.sets">
-    <div class="set" ng-repeat="(id, set) in user.sets">
-      <a href="#/profile/{{ user.id }}/sets/{{ id }}">
+  <div class="cardsets body-container section-row" ng-show="profile.sets">
+    <div class="set" ng-repeat="(id, set) in profile.sets">
+      <a href="#/profile/{{ profile.id }}/sets/{{ id }}">
         <p>{{ set.name }}</p>
       </a>
       <button class="delete-set" ng-click="deleteSet(id)">
