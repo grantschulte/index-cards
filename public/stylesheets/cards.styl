@@ -30,9 +30,10 @@ section.set {
     position:relative;
     padding:60px 0;
     margin-left:50%;
-    width:5000px;
+    width:100%;
     overflow:visible;
     clearfix();
+    white-space: nowrap;
 
     button.next,
     button.prev {
@@ -60,12 +61,12 @@ section.set {
       width:100%;
       position:relative;
       transCubicBez(600ms);
+      white-space: nowrap;
     }
 
     div.index-card {
       position                   : relative;
       display:inline-block;
-      float:left;
       height                     : 400px;
       width                      : 650px;
       padding                    : 60px;

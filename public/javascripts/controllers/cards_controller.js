@@ -1,4 +1,4 @@
-angular.module('indexCards.controllers').controller('SetsCtrl', ['$scope', '$rootScope', '$routeParams', 'Words', 'Set', 'Profile', 'Cards',  
+angular.module('indexCards.controllers').controller('CardsCtrl', ['$scope', '$rootScope', '$routeParams', 'Words', 'Set', 'Profile', 'Cards',  
 
 function($scope, $rootScope, $routeParams, Words, Set, Profile, Cards) {
 
