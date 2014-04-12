@@ -9,6 +9,8 @@ function($scope, $rootScope, $routeParams, Words, Profile, Set, Cards) {
     getProfile();
     getSet();
     getCards();
+
+    $scope.loading = false;
   };
 
   $scope.createCard = function() {
@@ -23,14 +25,16 @@ function($scope, $rootScope, $routeParams, Words, Profile, Set, Cards) {
   };
 
   $scope.getWords = function() {
-    var queryWord = $scope.word.toLowerCase();
-
-    Words.query({ word: queryWord }).$promise.then(
+    $scope.loading = true;
+    
+    var word = $scope.word.toLowerCase();
+    Words.query({ word: word }).$promise.then(
       function(words) {
         $scope.wordList = words;
+        $scope.loading = false;
       },
       function(err) {
-        console.error('Cannot find words: ', err);
+        $scope.error = err;
       }
     );
   };

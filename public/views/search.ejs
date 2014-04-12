@@ -34,7 +34,7 @@
       <button ng-click="getWords()">Search</button>
     </div>
 
-    <div ng-hide="wordList.length">
+    <div ng-show="wordList.length === 0">
       Your search returned no results.
     </div>
 
@@ -54,6 +54,16 @@
           </p>
         </li>
       </ol>
+    </div>
+
+    <div class="error" ng-show="error">
+      {{ error }}
+    </div>
+
+    <div ng-show="loading" class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
     </div>
   </div>
 </section>
