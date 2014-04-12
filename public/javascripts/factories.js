@@ -22,11 +22,14 @@ angular.module('indexCards.factories', ['ngResource'])
 
 // Set Factory
 .factory('Set', ['FBURL', '$firebase', function(FBURL, $firebase) {
-  var fbref = null;
-  var _ref  = null;
+  var fbref  = null;
+  var _ref   = null;
 
   return {
     get: function(uid, setid) {
+      _uid = uid;
+      _setid = setid;
+
       fbref = new Firebase(FBURL + 'users/' + uid + '/sets/' + setid);
       _ref = $firebase(fbref);
       return _ref;
@@ -42,9 +45,6 @@ angular.module('indexCards.factories', ['ngResource'])
           console.error('Rename Failed: ', err);
         }
       );
-    },
-    getCardSnapshot: function() {
-      return fbref.child('cards');
     }
   };
 }])

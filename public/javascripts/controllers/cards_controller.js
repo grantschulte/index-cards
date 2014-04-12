@@ -1,15 +1,16 @@
-angular.module('indexCards.controllers').controller('CardsCtrl', ['$scope', '$rootScope', '$routeParams', 'Words', 'Set', 'Profile', 'Cards',  
+angular.module('indexCards.controllers').controller('CardsCtrl', ['$scope', '$rootScope', '$routeParams', 'cardCount', 'Words', 'Set', 'Profile', 'Cards',  
 
-function($scope, $rootScope, $routeParams, Words, Set, Profile, Cards) {
+function($scope, $rootScope, $routeParams, cardCount, Words, Set, Profile, Cards) {
 
   var init = function() {
     $scope.uid = $routeParams.id;
     $scope.setid = $routeParams.setid;
 
+    $scope.loading = true;
+
     getProfile();
     getSet();
     getCards();
-    setView();
 
     $scope.currentCard = 1;
     $scope.cardOn = false;
@@ -51,7 +52,7 @@ function($scope, $rootScope, $routeParams, Words, Set, Profile, Cards) {
   };
 
   $scope.toggleAddCards = function() {
-    if (!$scope.set.count) { return false; }
+    if ($scope.set.count === 0) { return false; }
     $scope.addCardsOpen = !$scope.addCardsOpen;
   };
 
@@ -65,11 +66,8 @@ function($scope, $rootScope, $routeParams, Words, Set, Profile, Cards) {
 
   var getCards = function() {
     $scope.cards = Cards.get($scope.uid, $scope.setid);
+    $scope.loading = false;
   };  
-
-  var setView = function() {
-    if (!$scope.set.count) { $scope.addCardsOpen = true; }
-  };
 
   var resetAddCards = function() {
     $scope.addCardsOpen = false;

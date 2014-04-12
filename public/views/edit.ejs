@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <div class="edit-set-zero body-container" ng-show="!set.count">
+  <div class="edit-set-zero body-container" ng-show="!set.count || set.count === 0">
     <p>You don't have any cards in this set. <a href="#/profile/{{ profile.id }}/sets/{{ setid }}">Create some.</a></p>
   </div>
 
