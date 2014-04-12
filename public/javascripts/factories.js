@@ -23,7 +23,7 @@ angular.module('indexCards.factories', ['ngResource'])
 // Set Factory
 .factory('Set', ['FBURL', '$firebase', function(FBURL, $firebase) {
   var fbref = null;
-  var _ref = null;
+  var _ref  = null;
 
   return {
     get: function(uid, setid) {
@@ -52,7 +52,7 @@ angular.module('indexCards.factories', ['ngResource'])
 // Sets Factory
 .factory('Sets', ['FBURL', '$firebase', function(FBURL, $firebase) {
   var fbref = null;
-  var _ref = null;
+  var _ref  = null;
 
   return {
     get: function(uid) {
@@ -63,7 +63,8 @@ angular.module('indexCards.factories', ['ngResource'])
     create: function(set) {
       _ref.$add({
         name: set,
-        cards: false
+        cards: false,
+        count: 0
       }).then(
         function(set) {
           console.log('Set created');
@@ -80,9 +81,11 @@ angular.module('indexCards.factories', ['ngResource'])
 }])
 
 // Cards Factory
-.factory('Cards', ['FBURL', '$firebase', function(FBURL, $firebase) {
-  var fbref = null;
-  var _ref = null;
+.factory('Cards', ['FBURL', '$firebase', 'cardCount', function(FBURL, $firebase, cardCount) {
+  var fbref  = null;
+  var _ref   = null;
+  var _uid   = null;
+  var _setid = null;
 
   return {
     get: function(uid, setid) {
@@ -100,6 +103,7 @@ angular.module('indexCards.factories', ['ngResource'])
       }).then(
         function(card) {
           console.log('Success');
+          cardCount.increment(_uid, _setid);
         },
         function(err) {
           console.log('Create Card Failure: ', err);
@@ -108,6 +112,7 @@ angular.module('indexCards.factories', ['ngResource'])
     },
     remove: function(id) {
       _ref.$remove(id);
+      cardCount.decrement(_uid, _setid);
     }
   };
 }])

@@ -1,29 +1,31 @@
 <section class="section-row search" ng-controller="SearchCtrl">
   <div class="index-card-header container">
     <div><h1>{{ set.name }}</h1></div>
-    <div ng-show="setLength > 0" class="index-card-number">
-      {{ setLength }} Cards
+    <div>
+      <div ng-show="set.count" class="index-card-number">
+        {{ set.count }} Cards
+      </div>
+      <a href="#/profile/{{ profile.id }}"
+         ng-class="{ active: title === 'Profile' }">
+        <i class="fa fa-folder-open"></i>
+      </a>
+      <button ng-class="{ active: addCardsOpen }" 
+              ng-click="toggleAddCards()">
+        <i class="fa fa-plus"></i>
+      </button>
+      <a href="#/profile/{{ profile.id }}/sets/{{ setid }}/edit"
+         ng-class="{ active: title === 'Edit' }">
+        <i class="fa fa-pencil"></i>
+      </a>
+      <a href="#/profile/{{ profile.id }}/sets/{{ setid }}/search"
+         ng-class="{ active: title === 'Search' }">
+        <i class="fa fa-search-plus"></i>
+      </a>
+      <a href="#/profile/{{ profile.id }}/sets/{{ setid }}"
+         ng-class="{ active: title === 'Cards' }">
+        <i class="fa fa-eye"></i>
+      </a>
     </div>
-    <a href="#/profile/{{ profile.id }}"
-       ng-class="{ active: title === 'Profile' }">
-      <i class="fa fa-folder-open"></i>
-    </a>
-    <button ng-class="{ active: addCardsOpen }" 
-            ng-click="toggleAddCards()">
-      <i class="fa fa-plus"></i>
-    </button>
-    <a href="#/profile/{{ profile.id }}/sets/{{ setid }}/edit"
-       ng-class="{ active: title === 'Edit' }">
-      <i class="fa fa-pencil"></i>
-    </a>
-    <a href="#/profile/{{ profile.id }}/sets/{{ setid }}/search"
-       ng-class="{ active: title === 'Search' }">
-      <i class="fa fa-search-plus"></i>
-    </a>
-    <a href="#/profile/{{ profile.id }}/sets/{{ setid }}"
-       ng-class="{ active: title === 'Cards' }">
-      <i class="fa fa-eye"></i>
-    </a>
   </div>
 
   <div class="body-container">

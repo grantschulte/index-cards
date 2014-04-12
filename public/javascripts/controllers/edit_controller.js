@@ -13,7 +13,6 @@ function($scope, $rootScope, $routeParams, Profile, Set, Cards) {
 
   $scope.deleteCard = function(id) {
     Cards.remove(id);
-    getSet();
   };
 
   $scope.editSetName = function() {
@@ -26,13 +25,6 @@ function($scope, $rootScope, $routeParams, Profile, Set, Cards) {
 
   var getSet = function() {
     $scope.set = Set.get($scope.uid, $scope.setid);
-
-    // Gets length of set
-    var cardSnapshot = Set.getCardSnapshot();
-    
-    cardSnapshot.once('value', function(snapshot) {
-      $scope.setLength = snapshot.numChildren();
-    });
   };
 
   var getCards = function() {

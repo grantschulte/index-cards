@@ -10,7 +10,7 @@ function($scope, $rootScope, $routeParams, Profile, Sets) {
 
   $scope.createSet = function() {
     if (!$scope.setname) { return false; }
-    Sets.createSet($scope.setname);
+    Sets.create($scope.setname);
     $scope.setname = '';
   };
 

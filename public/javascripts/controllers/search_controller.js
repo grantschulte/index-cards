@@ -41,13 +41,6 @@ function($scope, $rootScope, $routeParams, Words, Profile, Set, Cards) {
 
   var getSet = function() {
     $scope.set = Set.get($scope.uid, $scope.setid);
-
-    // Gets length of set
-    var cardSnapshot = Set.getCardSnapshot();
-    
-    cardSnapshot.once('value', function(snapshot) {
-      $scope.setLength = snapshot.numChildren();
-    });
   };
 
   var getCards = function() {

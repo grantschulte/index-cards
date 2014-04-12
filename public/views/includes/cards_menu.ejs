@@ -1,5 +1,5 @@
-<div ng-show="setLength > 0" class="index-card-number">
-  {{ currentCard }} / {{ setLength }}
+<div ng-show="set.count > 0" class="index-card-number">
+  {{ currentCard }} / {{ set.count }}
 </div>
 <a href="#/profile/{{ profile.id }}"
    ng-class="{ active: title === 'Profile' }">

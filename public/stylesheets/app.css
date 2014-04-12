@@ -16,10 +16,12 @@ html {
 body {
   padding: 0;
   margin: 0;
-  font: normal 18px 'Actor' sans-serif;
+  height: 100%;
+  font-family: 'Actor', helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 18px;
   color: #303030;
   background-color: #e6f9f9;
-  height: 100%;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -27,9 +29,9 @@ a {
   text-decoration: none;
   color: #fff;
   cursor: pointer;
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
   cursor: pointer;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 h1,
 h2,
@@ -39,110 +41,10 @@ h5,
 h6 {
   color: $fff;
 }
-header {
-  padding: 20px 0;
-}
 h1 {
-  font-size: 20px;
   margin-top: 0;
   margin-bottom: 20px;
-}
-.spinner {
-  margin: 112px auto 0;
-  width: 70px;
-  text-align: center;
-}
-.spinner > div {
-  width: 18px;
-  height: 18px;
-  background-color: #f06048;
-  border-radius: 100%;
-  display: inline-block;
-  -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
-  animation: bouncedelay 1.4s infinite ease-in-out;
-/* Prevent first frame from flickering when animation starts */
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-.spinner .bounce1 {
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
-}
-.spinner .bounce2 {
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
-}
-@-webkit-keyframes bouncedelay {
-  0%, 80%, 100% {
-    -webkit-transform: scale(0);
-  }
-
-  40% {
-    -webkit-transform: scale(1);
-  }
-}
-[ngcloak],
-[ng-cloak],
-[data-ng-cloak],
-[x-ng-cloak],
-.ng-cloak,
-.x-ng-cloak {
-  display: none !important;
-}
-@-moz-keyframes bouncedelay {
-  0%, 80%, 100% {
-    transform: scale(0);
-    -webkit-transform: scale(0);
-  }
-
-  40% {
-    transform: scale(1);
-    -webkit-transform: scale(1);
-  }
-}
-@-webkit-keyframes bouncedelay {
-  0%, 80%, 100% {
-    transform: scale(0);
-    -webkit-transform: scale(0);
-  }
-
-  40% {
-    transform: scale(1);
-    -webkit-transform: scale(1);
-  }
-}
-@-o-keyframes bouncedelay {
-  0%, 80%, 100% {
-    transform: scale(0);
-    -webkit-transform: scale(0);
-  }
-
-  40% {
-    transform: scale(1);
-    -webkit-transform: scale(1);
-  }
-}
-@-ms-keyframes bouncedelay {
-  0%, 80%, 100% {
-    transform: scale(0);
-    -webkit-transform: scale(0);
-  }
-
-  40% {
-    transform: scale(1);
-    -webkit-transform: scale(1);
-  }
-}
-@keyframes bouncedelay {
-  0%, 80%, 100% {
-    transform: scale(0);
-    -webkit-transform: scale(0);
-  }
-
-  40% {
-    transform: scale(1);
-    -webkit-transform: scale(1);
-  }
+  font-size: 20px;
 }
 .wrapper {
   height: 100%;
@@ -225,7 +127,7 @@ input[type="password"] {
   border-radius: 5px;
   padding: 10px;
   background-color: #efefef;
-  font-family: 'Actor' sans-serif;
+  font-family: 'Actor', helvetica, sans-serif;
   font-weight: normal;
   font-size: 18px;
 }
@@ -354,6 +256,103 @@ div.index-card-header > div:last-child a {
   color: #303030;
   text-align: center;
   line-height: 60px;
+}
+.spinner {
+  margin: 112px auto 0;
+  width: 70px;
+  text-align: center;
+}
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #f06048;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+  animation: bouncedelay 1.4s infinite ease-in-out;
+/* Prevent first frame from flickering when animation starts */
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+@-webkit-keyframes bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+  }
+
+  40% {
+    -webkit-transform: scale(1);
+  }
+}
+[ngcloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
+@-moz-keyframes bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+
+  40% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+@-webkit-keyframes bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+
+  40% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+@-o-keyframes bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+
+  40% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+@-ms-keyframes bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+
+  40% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+
+  40% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
 }
 header {
   padding: 0;
@@ -747,40 +746,21 @@ section.profile div.add-cards button {
   float: left;
   width: 20%;
 }
-section.profile div.profile-header {
-  width: 100%;
-  margin: 0 auto;
-  color: #303030;
-  overflow: auto;
-  padding: 0;
-  height: 60px;
-  position: relative;
-  background-color: #a8f0f0;
-}
-section.profile div.profile-header :-moz-placeholder {
-  color: #60c0c0 !important;
-}
-section.profile div.profile-header :-ms-input-placeholder {
-  color: #60c0c0 !important;
-}
-section.profile div.profile-header ::-webkit-input-placeholder {
-  color: #60c0c0 !important;
-}
-section.profile div.profile-header > div:first-child {
+section.profile div.index-card-header > div:first-child {
   display: inline-block;
   float: left;
   width: 85%;
   zoom: 1;
 }
-section.profile div.profile-header > div:first-child:after,
-section.profile div.profile-header > div:first-child:before {
+section.profile div.index-card-header > div:first-child:after,
+section.profile div.index-card-header > div:first-child:before {
   content: "";
   display: table;
 }
-section.profile div.profile-header > div:first-child:after {
+section.profile div.index-card-header > div:first-child:after {
   clear: both;
 }
-section.profile div.profile-header > div:first-child input {
+section.profile div.index-card-header > div:first-child input {
   display: inline-block;
   float: left;
   padding: 0;
@@ -793,21 +773,21 @@ section.profile div.profile-header > div:first-child input {
   background: transparent;
   width: 100%;
 }
-section.profile div.profile-header > div:last-child {
+section.profile div.index-card-header > div:last-child {
   display: inline-block;
   float: right;
   width: 15%;
   zoom: 1;
 }
-section.profile div.profile-header > div:last-child:after,
-section.profile div.profile-header > div:last-child:before {
+section.profile div.index-card-header > div:last-child:after,
+section.profile div.index-card-header > div:last-child:before {
   content: "";
   display: table;
 }
-section.profile div.profile-header > div:last-child:after {
+section.profile div.index-card-header > div:last-child:after {
   clear: both;
 }
-section.profile div.profile-header > div:last-child button {
+section.profile div.index-card-header > div:last-child button {
   display: inline-block;
   float: left;
   margin: 0;
@@ -817,13 +797,13 @@ section.profile div.profile-header > div:last-child button {
   background-color: rgba(96,192,192,0.4);
   font-size: 16px;
 }
-section.profile div.profile-header > div:last-child button:hover {
+section.profile div.index-card-header > div:last-child button:hover {
   background-color: rgba(96,192,192,0.6);
 }
-section.profile div.profile-header > div:last-child button:last-child {
+section.profile div.index-card-header > div:last-child button:last-child {
   border-left: 1px solid rgba(0,0,0,0.1);
 }
-section.profile div.profile-header > div:last-child button i {
+section.profile div.index-card-header > div:last-child button i {
   margin-right: 10px;
 }
 section.profile div.cardsets {
@@ -892,13 +872,13 @@ section.profile div.profile-zero p {
   color: #f06048;
 }
 section.set {
-  background-color: #e6f9f9;
+  position: relative;
   padding: 0;
   margin-bottom: 0;
   width: 100%;
   height: 100%;
+  background-color: #e6f9f9;
   overflow: hidden;
-  position: relative;
 }
 section.set div.add-card div {
   margin-bottom: 10px;
@@ -929,8 +909,8 @@ section.set div.index-card-container {
   margin-left: 50%;
   width: 100%;
   overflow: visible;
-  zoom: 1;
   white-space: nowrap;
+  zoom: 1;
 }
 section.set div.index-card-container:after,
 section.set div.index-card-container:before {
@@ -939,28 +919,6 @@ section.set div.index-card-container:before {
 }
 section.set div.index-card-container:after {
   clear: both;
-}
-section.set div.index-card-container button.next,
-section.set div.index-card-container button.prev {
-  position: absolute;
-  top: 50%;
-  margin-top: -40px;
-  height: 80px;
-  width: 80px;
-  color: #f06048;
-  font-size: 80px;
-  line-height: 38px;
-  z-index: 9999;
-  -webkit-transition: all 200ms ease-in-out;
-  transition: all 200ms ease-in-out;
-}
-section.set div.index-card-container button.next.next,
-section.set div.index-card-container button.prev.next {
-  left: 330px;
-}
-section.set div.index-card-container button.next.prev,
-section.set div.index-card-container button.prev.prev {
-  left: -420px;
 }
 section.set div.index-card-container div.scroll {
   height: 100%;
@@ -1074,6 +1032,28 @@ section.set div.index-card-container div.index-card svg line {
   stroke: #2cdef2;
   stroke-width: 0.5;
 }
+section.set div.index-card-container button.next,
+section.set div.index-card-container button.prev {
+  position: absolute;
+  top: 50%;
+  margin-top: -40px;
+  height: 80px;
+  width: 80px;
+  color: #f06048;
+  font-size: 80px;
+  line-height: 38px;
+  z-index: 9999;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+section.set div.index-card-container button.next.next,
+section.set div.index-card-container button.prev.next {
+  left: 330px;
+}
+section.set div.index-card-container button.next.prev,
+section.set div.index-card-container button.prev.prev {
+  left: -420px;
+}
 section.set div.add-cards {
   font-size: 18px;
 }
@@ -1130,85 +1110,66 @@ section.set div.pop.ng-hide {
   transition: all 600ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 section.edit-set {
-  background-color: #e6f9f9;
+  position: relative;
   padding: 0;
   margin-bottom: 0;
   width: 100%;
+  background-color: #e6f9f9;
   overflow: hidden;
-  position: relative;
 }
-section.edit-set div.edit-header {
-  width: 100%;
-  margin: 0 auto;
-  color: #303030;
-  overflow: auto;
-  padding: 0;
-  height: 60px;
-  position: relative;
-  background-color: #a8f0f0;
-}
-section.edit-set div.edit-header :-moz-placeholder {
-  color: #60c0c0 !important;
-}
-section.edit-set div.edit-header :-ms-input-placeholder {
-  color: #60c0c0 !important;
-}
-section.edit-set div.edit-header ::-webkit-input-placeholder {
-  color: #60c0c0 !important;
-}
-section.edit-set div.edit-header > div:first-child {
+section.edit-set div.index-card-header > div:first-child {
   display: inline-block;
   float: left;
   width: 70%;
   position: relative;
   zoom: 1;
 }
-section.edit-set div.edit-header > div:first-child:after,
-section.edit-set div.edit-header > div:first-child:before {
+section.edit-set div.index-card-header > div:first-child:after,
+section.edit-set div.index-card-header > div:first-child:before {
   content: "";
   display: table;
 }
-section.edit-set div.edit-header > div:first-child:after {
+section.edit-set div.index-card-header > div:first-child:after {
   clear: both;
 }
-section.edit-set div.edit-header > div:first-child input {
+section.edit-set div.index-card-header > div:first-child input {
   display: block;
   float: left;
   padding: 0;
   padding-left: 20px;
   margin: 0;
-  font-size: 22px;
-  text-align: left;
   height: 60px;
+  text-align: left;
+  font-size: 22px;
   font-weight: normal;
   background: transparent;
 }
-section.edit-set div.edit-header > div:first-child div.index-card-number {
+section.edit-set div.index-card-header > div:first-child div.index-card-number {
   position: absolute;
   top: 0;
   right: 0;
   width: 120px;
+  height: 60px;
   line-height: 60px;
   text-align: center;
-  height: 60px;
   background-color: rgba(96,192,192,0.2);
 }
-section.edit-set div.edit-header > div:last-child {
+section.edit-set div.index-card-header > div:last-child {
   display: inline-block;
   float: right;
   width: 30%;
   zoom: 1;
 }
-section.edit-set div.edit-header > div:last-child:after,
-section.edit-set div.edit-header > div:last-child:before {
+section.edit-set div.index-card-header > div:last-child:after,
+section.edit-set div.index-card-header > div:last-child:before {
   content: "";
   display: table;
 }
-section.edit-set div.edit-header > div:last-child:after {
+section.edit-set div.index-card-header > div:last-child:after {
   clear: both;
 }
-section.edit-set div.edit-header > div:last-child button,
-section.edit-set div.edit-header > div:last-child a {
+section.edit-set div.index-card-header > div:last-child button,
+section.edit-set div.index-card-header > div:last-child a {
   display: inline-block;
   float: left;
   margin: 0;
@@ -1218,19 +1179,19 @@ section.edit-set div.edit-header > div:last-child a {
   background-color: rgba(96,192,192,0.4);
   font-size: 16px;
 }
-section.edit-set div.edit-header > div:last-child button:hover,
-section.edit-set div.edit-header > div:last-child a:hover {
+section.edit-set div.index-card-header > div:last-child button:hover,
+section.edit-set div.index-card-header > div:last-child a:hover {
   background-color: rgba(96,192,192,0.6);
 }
-section.edit-set div.edit-header > div:last-child button:last-child,
-section.edit-set div.edit-header > div:last-child a:last-child {
+section.edit-set div.index-card-header > div:last-child button:last-child,
+section.edit-set div.index-card-header > div:last-child a:last-child {
   border-left: 1px solid rgba(0,0,0,0.1);
 }
-section.edit-set div.edit-header > div:last-child button i,
-section.edit-set div.edit-header > div:last-child a i {
+section.edit-set div.index-card-header > div:last-child button i,
+section.edit-set div.index-card-header > div:last-child a i {
   margin-right: 10px;
 }
-section.edit-set div.edit-header > div:last-child a {
+section.edit-set div.index-card-header > div:last-child a {
   color: #303030;
   text-align: center;
   line-height: 60px;

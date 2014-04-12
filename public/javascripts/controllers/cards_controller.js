@@ -9,6 +9,7 @@ function($scope, $rootScope, $routeParams, Words, Set, Profile, Cards) {
     getProfile();
     getSet();
     getCards();
+    setView();
 
     $scope.currentCard = 1;
     $scope.cardOn = false;
@@ -18,14 +19,13 @@ function($scope, $rootScope, $routeParams, Words, Set, Profile, Cards) {
 
   $scope.createCard = function() {
     Cards.create($scope.term, $scope.definition);
-    getSet();
     resetAddCards();
   };
 
   $scope.nextCard = function () {
     resetAddCards();
 
-    if ($scope.currentCard === $scope.setLength) { return false; }
+    if ($scope.currentCard === $scope.set.count) { return false; }
     
     $scope.scroll_left_px = $scope.scroll_left_px - 670;
     $scope.currentCard += 1;
@@ -51,7 +51,7 @@ function($scope, $rootScope, $routeParams, Words, Set, Profile, Cards) {
   };
 
   $scope.toggleAddCards = function() {
-    if (!$scope.setLength) { return false; }
+    if (!$scope.set.count) { return false; }
     $scope.addCardsOpen = !$scope.addCardsOpen;
   };
 
@@ -61,26 +61,16 @@ function($scope, $rootScope, $routeParams, Words, Set, Profile, Cards) {
 
   var getSet = function() {
     $scope.set = Set.get($scope.uid, $scope.setid);
-
-    // Gets length of set
-    var cardSnapshot = Set.getCardSnapshot();
-    
-    cardSnapshot.once('value', function(snapshot) {
-      $scope.setLength = snapshot.numChildren();
-      setView();
-    });
   };
 
   var getCards = function() {
     $scope.cards = Cards.get($scope.uid, $scope.setid);
   };  
 
-  // Opens add cards template if set is empty
   var setView = function() {
-    if (!$scope.setLength) { $scope.addCardsOpen = true; }
+    if (!$scope.set.count) { $scope.addCardsOpen = true; }
   };
 
-  // Reset add cards template after card is created
   var resetAddCards = function() {
     $scope.addCardsOpen = false;
     $scope.term = '';

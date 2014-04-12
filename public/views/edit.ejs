@@ -1,9 +1,9 @@
 <section class="section-row edit-set" ng-controller="EditSetCtrl">
-  <div class="edit-header">
+  <div class="index-card-header">
     <div>
       <input type="text" ng-model="set.name">
-      <div ng-show="setLength" class="index-card-number">
-          {{ setLength }} Cards
+      <div ng-show="set.count" class="index-card-number">
+          {{ set.count }} Cards
       </div>
     </div>
     <div>
@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <div class="edit-set-zero body-container" ng-show="!setLength">
+  <div class="edit-set-zero body-container" ng-show="!set.count">
     <p>You don't have any cards in this set. <a href="#/profile/{{ profile.id }}/sets/{{ setid }}">Create some.</a></p>
   </div>
 
