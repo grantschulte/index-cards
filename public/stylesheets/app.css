@@ -948,6 +948,7 @@ section.set div.index-card-container div.index-card {
   -webkit-perspective-origin: 50%;
   z-index: 1;
   opacity: 0;
+  white-space: normal;
 }
 section.set div.index-card-container div.index-card:first-child {
   margin-left: -325px;
