@@ -5,8 +5,7 @@ angular.module('indexCards', [
   'indexCards.routes', 
   'indexCards.factories', 
   'simpleLoginTools', 
-  'routeSecurity',
-  'ngAnimate'
+  'routeSecurity'
 ])
 
 .run(['loginService', '$rootScope', 'FBURL', function(loginService, $rootScope, FBURL) {

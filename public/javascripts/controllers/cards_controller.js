@@ -27,7 +27,6 @@ function($scope, $rootScope, $routeParams, cardCount, Words, Set, Profile, Cards
     resetAddCards();
 
     if ($scope.currentCard === $scope.set.count) { return false; }
-    
     $scope.scroll_left_px = $scope.scroll_left_px - 670;
     $scope.currentCard += 1;
     $scope.cardOn = false;
@@ -37,7 +36,6 @@ function($scope, $rootScope, $routeParams, cardCount, Words, Set, Profile, Cards
     resetAddCards();
 
     if ($scope.currentCard === 1) { return false; }
-    
     $scope.scroll_left_px = $scope.scroll_left_px + 670;
     $scope.currentCard -= 1;
     $scope.cardOn = false;

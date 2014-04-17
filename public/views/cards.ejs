@@ -8,7 +8,7 @@
     <div class="scroll" ng-style="scrollLeft()">
       <div class="index-card"
            ng-click="flipCard(id)"
-           ng-class="{ on: cardOn && currentCard === id + 1, curr: currentCard === id + 1 }"
+           ng-class="{ on: cardOn, curr: currentCard === id + 1 }"
            ng-repeat="(id, card) in cards | orderByPriority">
 
         <span ng-include="'views/includes/index_card.ejs'"></span>
