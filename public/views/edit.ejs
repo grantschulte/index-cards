@@ -2,18 +2,26 @@
   <div class="index-card-header">
     <div>
       <input type="text" ng-model="set.name">
+    </div>
+    <div>
+    <button class="rename" ng-click="editSetName()" ng-show="renameActive">Save name</button>
       <div ng-show="set.count" class="index-card-number">
           {{ set.count }} Cards
       </div>
-    </div>
-    <div>
-      <button ng-click="editSetName()">
-        <i class="fa fa-pencil"></i> 
-        Rename Set
+      <a href="#/profile/{{ profile.id }}">
+        <i class="fa fa-folder-open"></i>
+      </a>
+      <button class="inactive">
+        <i class="fa fa-plus"></i>
       </button>
+      <a href="#/profile/{{ profile.id }}/sets/{{ setid }}/edit" class="active">
+        <i class="fa fa-pencil"></i>
+      </a>
+      <a href="#/profile/{{ profile.id }}/sets/{{ setid }}/search">
+        <i class="fa fa-search-plus"></i>
+      </a>
       <a href="#/profile/{{ profile.id }}/sets/{{ setid }}">
-        <i class="fa fa-eye"></i> 
-        View Set
+        <i class="fa fa-eye"></i>
       </a>
     </div>
   </div>

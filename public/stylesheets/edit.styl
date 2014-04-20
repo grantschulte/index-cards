@@ -31,7 +31,7 @@ section.edit-set {
         position:absolute;
         top:0;
         right:0;
-        width:120px;
+        width:80px;
         height:60px;
         line-height:60px;
         text-align:center;
@@ -39,39 +39,18 @@ section.edit-set {
       }
     }
 
-    > div:last-child {      
-      display:inline-block;
-      float:right;
-      width:30%;
-      clearfix();
+    button.rename {
+      margin-right:10px;
+      margin-top:10px;
+      width:120px;
+      height:40px;
+      font-size:14px;
+      border:0;
+      border-radius:4px;
+      background-color:$red2;
 
-      button,
-      a {        
-        display:inline-block;
-        float:left;
-        margin:0;
-        width:50%;
-        height:60px;
-        border-radius:0;
-        background-color:$blue_o4;
-        font-size:16px;
-
-        &:hover {
-          background-color:$blue_o6;
-        }
-        &:last-child {
-          border-left:1px solid rgba(0,0,0,0.1);
-        }
-
-        i {
-          margin-right:10px;
-        }
-      }
-
-      a {        
-        color:$dark;
-        text-align:center;
-        line-height:60px;
+      &:hover {
+        background-color:$red;
       }
     }
   }

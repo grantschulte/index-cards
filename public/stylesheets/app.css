@@ -252,6 +252,14 @@ div.index-card-header > div:last-child button.active,
 div.index-card-header > div:last-child a.active {
   background-color: rgba(96,192,192,0.6);
 }
+div.index-card-header > div:last-child button.inactive,
+div.index-card-header > div:last-child a.inactive {
+  color: rgba(96,192,192,0.6);
+}
+div.index-card-header > div:last-child button.inactive:hover,
+div.index-card-header > div:last-child a.inactive:hover {
+  background-color: rgba(96,192,192,0.4);
+}
 div.index-card-header > div:last-child a {
   color: #303030;
   text-align: center;
@@ -1043,7 +1051,7 @@ section.set div.index-card-container button.prev {
   color: #f06048;
   font-size: 80px;
   line-height: 38px;
-  z-index: 9999;
+  z-index: 99999;
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
@@ -1149,53 +1157,24 @@ section.edit-set div.index-card-header > div:first-child div.index-card-number {
   position: absolute;
   top: 0;
   right: 0;
-  width: 120px;
+  width: 80px;
   height: 60px;
   line-height: 60px;
   text-align: center;
   background-color: rgba(96,192,192,0.2);
 }
-section.edit-set div.index-card-header > div:last-child {
-  display: inline-block;
-  float: right;
-  width: 30%;
-  zoom: 1;
-}
-section.edit-set div.index-card-header > div:last-child:after,
-section.edit-set div.index-card-header > div:last-child:before {
-  content: "";
-  display: table;
-}
-section.edit-set div.index-card-header > div:last-child:after {
-  clear: both;
-}
-section.edit-set div.index-card-header > div:last-child button,
-section.edit-set div.index-card-header > div:last-child a {
-  display: inline-block;
-  float: left;
-  margin: 0;
-  width: 50%;
-  height: 60px;
-  border-radius: 0;
-  background-color: rgba(96,192,192,0.4);
-  font-size: 16px;
-}
-section.edit-set div.index-card-header > div:last-child button:hover,
-section.edit-set div.index-card-header > div:last-child a:hover {
-  background-color: rgba(96,192,192,0.6);
-}
-section.edit-set div.index-card-header > div:last-child button:last-child,
-section.edit-set div.index-card-header > div:last-child a:last-child {
-  border-left: 1px solid rgba(0,0,0,0.1);
-}
-section.edit-set div.index-card-header > div:last-child button i,
-section.edit-set div.index-card-header > div:last-child a i {
+section.edit-set div.index-card-header button.rename {
   margin-right: 10px;
+  margin-top: 10px;
+  width: 120px;
+  height: 40px;
+  font-size: 14px;
+  border: 0;
+  border-radius: 4px;
+  background-color: #f07860;
 }
-section.edit-set div.index-card-header > div:last-child a {
-  color: #303030;
-  text-align: center;
-  line-height: 60px;
+section.edit-set div.index-card-header button.rename:hover {
+  background-color: #f06048;
 }
 section.edit-set ul.edit-set-list {
   margin: 0;

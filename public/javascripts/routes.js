@@ -21,16 +21,16 @@ angular.module('indexCards.routes', ['ngRoute'])
     .when( '/profile/:id/sets/:setid/edit', {
       authRequired: true,
       templateUrl : '../views/edit.ejs',
-      title: 'Edit'
+      title: 'Edit Set'
     })
     .when( '/profile/:id/sets/:setid', {
       authRequired: true,
       templateUrl : '../views/cards.ejs',
-      title: 'Cards'
+      title: 'View Cards'
     })
     .when( '/profile/:id/sets/:setid/search', {
       authRequired: true,
       templateUrl : '../views/search.ejs',
-      title: 'Search'
+      title: 'Search for terms'
     })
 })

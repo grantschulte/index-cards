@@ -21,9 +21,14 @@ angular.module('indexCards', [
   }
 }])
 
-.run(function($rootScope){
+.run(function($rootScope, $location){
   $rootScope.$on("$routeChangeSuccess", function(event, currentRoute, previousRoute) {
-      $rootScope.title = currentRoute.title;
+      if ($location.$$path === '/') {
+        $rootScope.title = 'IndexCards v1 - Create index card sets to study topics or enhance your vocabulary.';
+      }
+      else {
+        $rootScope.title = 'IndexCards v1 - ' + currentRoute.title;
+      }
   });
 });
 

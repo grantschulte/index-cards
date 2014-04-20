@@ -7,6 +7,7 @@ var express = require( 'express' );
 var routes  = require( './routes' );
 var http    = require( 'http' );
 var path    = require( 'path' );
+var seojs   = require('express-seojs');
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.favicon(path.join(__dirname, 'images/favicon.ico')));
+app.use(seojs('e08xycul5mrlmp62ribmv9018'));
 
 // development only
 if ('development' == app.get('env')) {

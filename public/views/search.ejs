@@ -5,24 +5,19 @@
       <div ng-show="set.count" class="index-card-number">
         {{ set.count }} Cards
       </div>
-      <a href="#/profile/{{ profile.id }}"
-         ng-class="{ active: title === 'Profile' }">
+      <a href="#/profile/{{ profile.id }}">
         <i class="fa fa-folder-open"></i>
       </a>
-      <button ng-class="{ active: addCardsOpen }" 
-              ng-click="toggleAddCards()">
+      <button class="inactive">
         <i class="fa fa-plus"></i>
       </button>
-      <a href="#/profile/{{ profile.id }}/sets/{{ setid }}/edit"
-         ng-class="{ active: title === 'Edit' }">
+      <a href="#/profile/{{ profile.id }}/sets/{{ setid }}/edit">
         <i class="fa fa-pencil"></i>
       </a>
-      <a href="#/profile/{{ profile.id }}/sets/{{ setid }}/search"
-         ng-class="{ active: title === 'Search' }">
+      <a href="#/profile/{{ profile.id }}/sets/{{ setid }}/search" class="active">
         <i class="fa fa-search-plus"></i>
       </a>
-      <a href="#/profile/{{ profile.id }}/sets/{{ setid }}"
-         ng-class="{ active: title === 'Cards' }">
+      <a href="#/profile/{{ profile.id }}/sets/{{ setid }}">
         <i class="fa fa-eye"></i>
       </a>
     </div>
