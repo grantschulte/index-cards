@@ -472,6 +472,20 @@ footer {
   height: 100px;
   background-color: #303030;
 }
+div.footer {
+  padding: 20px;
+  font-size: 14px;
+  color: #fff;
+}
+div.footer.home {
+  width: 980px;
+  margin: 0 auto;
+  padding: 20px 0;
+  color: #303030;
+}
+div.footer.home a {
+  color: #303030;
+}
 section.home {
   height: 100%;
   background-color: #e6f9f9;
@@ -506,6 +520,16 @@ section.home div.home-header h1 {
 section.home div.home-body {
   width: 980px;
   margin: 40px auto 0;
+  height: auto;
+  zoom: 1;
+}
+section.home div.home-body:after,
+section.home div.home-body:before {
+  content: "";
+  display: table;
+}
+section.home div.home-body:after {
+  clear: both;
 }
 section.home div.login-errors {
   width: 980px;

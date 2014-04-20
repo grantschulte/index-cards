@@ -36,6 +36,6 @@
           ng-controller="HeaderCtrl"
           ng-class="{ login: isLogin() }"></header>
   <section class="wrapper" ng-view></section>
-  <footer ng-show-auth="login"></footer>
+  <footer ng-include="'views/includes/footer.ejs'" ng-show-auth="login"></footer>
 </body>
 </html>
