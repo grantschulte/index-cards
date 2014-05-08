@@ -1,5 +1,5 @@
 {
-  "name": "indexcards",
+  "name": "indexCards",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -9,6 +9,13 @@
     "express": "3.4.8",
     "stylus": "*",
     "ejs": "*",
-    "express-seojs": "0.0.5"
+    "express-seojs": "0.0.5",
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.6.3",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-contrib-jasmine": "~0.6.4",
+    "grunt-contrib-concat": "*",
+    "grunt-usemin": "*"
   }
 }

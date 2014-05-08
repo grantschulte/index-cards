@@ -7,29 +7,6 @@
   <link rel='stylesheet' href='stylesheets/app.css'>
   <link rel='stylesheet' href='/font-awesome/css/font-awesome.min.css'>
   <link rel="shortcut icon" href="images/favicon.ico" />
-  <script src='/firebase/firebase.js'></script>
-  <script src='/firebase-simple-login/firebase-simple-login.js'></script>
-  <script src='/angular/angular.min.js'></script>
-  <script src='/angular-route/angular-route.min.js'></script>
-  <script src='/angular-resource/angular-resource.js'></script>
-  <script src='/angularfire/angularfire.min.js'></script>
-  <script src='/javascripts/app.js'></script>
-  <script src='/javascripts/config.js'></script>
-  <script src='/javascripts/routes.js'></script>
-  <script src='/javascripts/controllers.js'></script>
-  <script src='/javascripts/factories.js'></script>
-  <script src='/javascripts/services.js'></script>
-  <script src='/javascripts/service.login.js'></script>
-  <script src='/javascripts/service.firebase.js'></script>
-  <script src='/javascripts/service.cardCount.js'></script>
-  <script src='/javascripts/module.simpleLoginTools.js'></script>
-  <script src='/javascripts/module.routeSecurity.js'></script>
-  <script src='/javascripts/controllers/login_controller.js'></script>
-  <script src='/javascripts/controllers/header_controller.js'></script>
-  <script src='/javascripts/controllers/profile_controller.js'></script>
-  <script src='/javascripts/controllers/cards_controller.js'></script>
-  <script src='/javascripts/controllers/edit_controller.js'></script>
-  <script src='/javascripts/controllers/search_controller.js'></script>
 </head>
 <body ng-cloak>
   <header ng-include="'views/includes/header.ejs'"
@@ -37,5 +14,12 @@
           ng-class="{ login: isLogin() }"></header>
   <section class="wrapper" ng-view></section>
   <footer ng-include="'views/includes/footer.ejs'" ng-show-auth="login"></footer>
+  <script src='/firebase/firebase.js'></script>
+  <script src='/firebase-simple-login/firebase-simple-login.js'></script>
+  <script src='/angular/angular.min.js'></script>
+  <script src='/angular-route/angular-route.min.js'></script>
+  <script src='/angular-resource/angular-resource.js'></script>
+  <script src='/angularfire/angularfire.min.js'></script>
+  <script src='<%= buildUrl %>/js/app.min.js'></script>
 </body>
 </html>

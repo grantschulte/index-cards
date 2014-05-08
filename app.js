@@ -3,13 +3,16 @@
  * Module dependencies.
  */
 
-var express = require( 'express' );
-var routes  = require( './routes' );
-var http    = require( 'http' );
-var path    = require( 'path' );
+var express = require('express');
+var routes  = require('./routes');
+var http    = require('http');
+var path    = require('path');
+var seojs   = require('express-seojs');
 
 var app = express();
-var seojs = require('express-seojs');
+
+// locals
+app.locals.buildUrl = '/dist'
 
 // all environments
 app.set('port', process.env.PORT || 3000);
